@@ -31,10 +31,10 @@ public:
 	virtual FRotator GetControlRotation() const override;
 
 
-	void Sound();
-	void Sound2();
-	bool Damage();
-	bool Attack();
+	//void Sound();
+	//void Sound2();
+	//bool Damage();
+	//bool Attack();
 
 
 
@@ -70,24 +70,24 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPlayer = 0.0f;
 
-	// tells the max of the enemy 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float EnemyMaxHealth = 30;
+	//// tells the max of the enemy 
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	float EnemyMaxHealth = 30;
 
-	// tells the current health of the enemy 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float EnemyHealthCurrent;
+	//// tells the current health of the enemy 
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	float EnemyHealthCurrent;
 
 
-	UPROPERTY(BlueprintReadOnly, Category = "Audio")
-		USoundCue* EnemyAudioCueTest;
-	UPROPERTY(BlueprintReadOnly, Category = "Audio")
-		UAudioComponent* AudioComponent;
+	//UPROPERTY(BlueprintReadOnly, Category = "Audio")
+	//	USoundCue* EnemyAudioCueTest;
+	//UPROPERTY(BlueprintReadOnly, Category = "Audio")
+	//	UAudioComponent* AudioComponent;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Audio")
-		USoundCue* EnemyAudioCueTest2;
-	UPROPERTY(BlueprintReadOnly, Category = "Audio")
-		UAudioComponent* AudioComponent2;
+	//UPROPERTY(BlueprintReadOnly, Category = "Audio")
+	//	USoundCue* EnemyAudioCueTest2;
+	//UPROPERTY(BlueprintReadOnly, Category = "Audio")
+	//	UAudioComponent* AudioComponent2;
 	
 	
 };

@@ -45,8 +45,8 @@ AAI_Bot_Controller_M::AAI_Bot_Controller_M()
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
 
-
-	EnemyHealthCurrent = EnemyMaxHealth;
+/*
+	EnemyHealthCurrent = EnemyMaxHealth;*/
 }
 
 void AAI_Bot_Controller_M::BeginPlay()
@@ -74,20 +74,24 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	//Makes a pointers of my ai bot and make into a pawn  
 	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
 
-	// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	 //if the Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
 	if (DistanceFromPlayer > AIEyeRadius)
 	{
 		IsThePlayerDetected = false;
 		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
 	}
 
+	//// ai bot will move to the next waypoint if it does not see the player  
+	//if (Character->NextWaypoint != nullptr)
+	//{
+	//	MoveToActor(Character->NextWaypoint, 5.0f);
+	//}
+
 	// ai bot will move to the next waypoint if it does not see the player  
 	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false)
 	{
 		MoveToActor(Character->NextWaypoint, 5.0f);
 	}
-
-
 	// if the player is seen ai bot will chase after player 
 	else if (IsThePlayerDetected == true)
 	{
@@ -137,23 +141,23 @@ FRotator AAI_Bot_Controller_M::GetControlRotation() const
 	return FRotator(0.0f, GetPawn()->GetActorRotation().Yaw, 0.0f);
 }
 
-void AAI_Bot_Controller_M::Sound()
-{
-}
-
-void AAI_Bot_Controller_M::Sound2()
-{
-}
-
-bool AAI_Bot_Controller_M::Damage()
-{
-	return false;
-}
-
-bool AAI_Bot_Controller_M::Attack()
-{
-	return false;
-}
+//void AAI_Bot_Controller_M::Sound()
+//{
+//}
+//
+//void AAI_Bot_Controller_M::Sound2()
+//{
+//}
+//
+//bool AAI_Bot_Controller_M::Damage()
+//{
+//	return false;
+//}
+//
+//bool AAI_Bot_Controller_M::Attack()
+//{
+//	return false;
+//}
 
 
 //Function that will dectecte player distance 

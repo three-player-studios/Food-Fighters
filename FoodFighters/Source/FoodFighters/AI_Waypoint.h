@@ -16,9 +16,6 @@ public:
 	// Sets default values for this actor's properties
 	AAI_Waypoint();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 	//defines USceneComponent
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
@@ -27,10 +24,14 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		UBoxComponent* BoxComponent;
 
-
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AAI_Waypoint* NextWaypoint;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 
 
 public:	

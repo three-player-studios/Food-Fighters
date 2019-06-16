@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AI_Waypoint.h"
-#include"Components/BoxComponent.h"
 #include "AI_Bot_M.h"
 
 // Sets default values
