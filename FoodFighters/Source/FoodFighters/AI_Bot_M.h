@@ -15,9 +15,10 @@ public:
 	// Sets default values for this character's properties
 	AAI_Bot_M();
 
-	//define class  AMyAICharaterWaypoint
+	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AAI_Waypoint* NextWaypoint;
+		class AWaypoint* NextWaypoint;
+
 
 protected:
 	// Called when the game starts or when spawned

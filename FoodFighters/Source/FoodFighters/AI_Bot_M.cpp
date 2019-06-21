@@ -9,10 +9,6 @@ AAI_Bot_M::AAI_Bot_M()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//doesnt rotate when controller rotate 
-	bUseControllerRotationPitch = false;
-	bUseControllerRotationRoll = false;
-	bUseControllerRotationYaw = false;
 
 
 	// will get charater roataion movement and set it at a rate of 600 on y axis  
