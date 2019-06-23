@@ -19,6 +19,30 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint* NextWaypoint;
 
+	// tells the max of the enemy 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float EnemyMaxHealth = 30;
+
+	// tells the current health of the enemy 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float EnemyHealthCurrent;
+
+
+
+
+	//// Player hit box
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
+		class USphereComponent* triggerC;
+
+
+
+	//// declare overlap begin function
+	UFUNCTION()
+		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -30,6 +54,7 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 
 	
 };

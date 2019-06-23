@@ -7,6 +7,9 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
+#include "items.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
+#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -45,6 +48,42 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+
+	/////stuff arifa added
+	triggerCapsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("RootComponent"));
+	triggerCapsule->InitCapsuleSize(92.f, 96.0f);
+	triggerCapsule->SetCollisionProfileName(TEXT("trigger"));
+	triggerCapsule->SetupAttachment(RootComponent);
+
+
+
+	triggerCapsule->OnComponentBeginOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapBegin);
+	triggerCapsule->OnComponentEndOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapEnd);
+
+
+
+	Baselevel = 0;
+	BaseHealth = 100;
+	BaseDEF = 10;
+	BaseDEX = 10;
+	BaseLUCK = 10;
+	BaseEXP = 10;
+	BaseSPD = 10;
+	BaseSTR = 10;
+	BaseVIT = 10;
+
+	CURlevel = Baselevel;
+	CURHealth = BaseHealth;
+	CURDEF = BaseDEF;
+	CURDEX = BaseDEX;
+	CURLUCK = BaseLUCK;
+	CUREXP = BaseEXP;
+	CURSPD = BaseSPD;
+	CURSTR = BaseSTR;
+	CURVIT = BaseVIT;
+
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -75,6 +114,60 @@ void AFoodFightersCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AFoodFightersCharacter::OnResetVR);
 }
+
+
+
+
+///arifa added this hit box collision
+void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	{
+		if (GEngine) 
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap begin"));
+		}
+	}
+}
+///arifa added this hit box collision
+void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
+{
+
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	{
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap end"));
+		}
+
+
+	}
+
+}
+
+//level function for player
+void AFoodFightersCharacter::LevelUP()
+{
+	// player exp reaches a certain point then player levels up
+	if (CUREXP >= 100) 
+	{
+	
+		CURlevel = Baselevel + 1;
+		CURHealth = BaseHealth ;
+		CURDEF = BaseDEF + FMath::FRandRange(1,10);
+		CURDEX = BaseDEX + FMath::FRandRange(1, 10);
+		CURLUCK = BaseLUCK + FMath::FRandRange(1, 10);
+		CUREXP = BaseEXP + FMath::FRandRange(1, 10);
+		CURSPD = BaseSPD + FMath::FRandRange(1, 10);
+		CURSTR = BaseSTR + FMath::FRandRange(1, 10);
+		CURVIT = BaseVIT + FMath::FRandRange(1, 10);;
+	
+	}
+
+}
+
+
+
 
 
 void AFoodFightersCharacter::OnResetVR()

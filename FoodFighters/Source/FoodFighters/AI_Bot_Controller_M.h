@@ -74,24 +74,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPlayer = 0.0f;
 
-	// tells the max of the enemy 
-		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-			float EnemyMaxHealth = 30;
-
-		// tells the current health of the enemy 
-		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-			float EnemyHealthCurrent;
 
 
-		UPROPERTY(BlueprintReadOnly, Category = "Audio")
-			USoundCue* EnemyAudioCueAttack;
-		UPROPERTY(BlueprintReadOnly, Category = "Audio")
-			UAudioComponent* AudioComponent;
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		USoundCue* EnemyAudioCueAttack;
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		UAudioComponent* AudioComponent;
 
-		UPROPERTY(BlueprintReadOnly, Category = "Audio")
-			USoundCue* EnemyAudioCueWalk;
-		UPROPERTY(BlueprintReadOnly, Category = "Audio")
-			UAudioComponent* AudioComponent2;
-	
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		USoundCue* EnemyAudioCueWalk;
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		UAudioComponent* AudioComponent2;
+
+
 	
 };

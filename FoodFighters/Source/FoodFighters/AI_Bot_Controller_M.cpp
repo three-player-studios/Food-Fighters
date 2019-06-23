@@ -48,8 +48,6 @@ AAI_Bot_Controller_M::AAI_Bot_Controller_M()
 	GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &AAI_Bot_Controller_M::OnPlayerDectected);
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
-
-
 	
 }
 
