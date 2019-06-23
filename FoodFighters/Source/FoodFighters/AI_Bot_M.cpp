@@ -11,7 +11,9 @@
 #include "Components/CapsuleComponent.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-
+#include "FoodFightersCharacter.h"
+#include "items.h"
+#include "AI_Bot_M_Prey.h"
 
 // Sets default values
 AAI_Bot_M::AAI_Bot_M()
@@ -22,8 +24,6 @@ AAI_Bot_M::AAI_Bot_M()
 	// will get charater roataion movement and set it at a rate of 600 on y axis  
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 600.0f, 0.0f);
-
-
 
 
 	triggerC = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
@@ -45,6 +45,27 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit overlap begin"));
 		}
+
+
+		if (&AFoodFightersCharacter::ActorToWorld)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+
+		}
+
+
+		if (&Aitems::ActorToWorld)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  item overlap begin"));
+
+		}
+
+		if (&AAI_Bot_M_Prey::ActorToWorld)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by prey monster  overlap begin"));
+
+		}
+
 	}
 }
 

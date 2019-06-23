@@ -39,12 +39,10 @@ public:
 
 
 
-
-
-
 	// will dectecte if player is around 
 	UFUNCTION()
 		void OnPlayerDectected(TArray<AActor*> DectectedPlayer);
+
 
 	// the radius of sight the ai bot can see 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
@@ -73,7 +71,6 @@ public:
 	// tells the distance of the player 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPlayer = 0.0f;
-
 
 
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")

@@ -27,9 +27,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float EnemyHealthCurrent;
 
-
-
-
 	//// Player hit box
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class USphereComponent* triggerC;

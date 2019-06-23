@@ -101,34 +101,6 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 		MoveToActor(Player, 5.0f);
 	}
 
-
-	/*
-	
-
-		if (AIEyeRadius <= 100 && EnemyHealthCurrent >= 10)
-		{
-			Attack();
-		}
-		else 
-		{
-			!Attack();
-		}
-
-		if (Damage)
-		{
-			EnemyHealthCurrent - 2;
-
-		}
-	}
-
-
-	if (Attack) 
-	{
-	
-		//playerhealth - 1;
-	}
-	
-	*/
 }
 
 FRotator AAI_Bot_Controller_M::GetControlRotation() const
@@ -155,18 +127,6 @@ void AAI_Bot_Controller_M::OnPlayerDectected(TArray<AActor*> DectectedPlayer)
 	
 	//player is found 
 	IsThePlayerDetected = true;
-
-
-	//if (DectectedPlayer.Num() > 0) 
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("PLayer has eneted filed of vision "), DistanceFromPlayer);
-	//}
-	//else if (DectectedPlayer.Num() < 0) 
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("PLayer has exited filed of vision  "), DistanceFromPlayer);
-	//}
-
-
 }
 
 void AAI_Bot_Controller_M::AttckSound()
