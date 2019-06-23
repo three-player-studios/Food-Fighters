@@ -68,10 +68,11 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	BaseDEF = 10;
 	BaseDEX = 10;
 	BaseLUCK = 10;
-	BaseEXP = 10;
+	BaseEXP = 0;
 	BaseSPD = 10;
 	BaseSTR = 10;
 	BaseVIT = 10;
+	BaseLevelupCheckpoint = 100;
 
 	CURlevel = Baselevel;
 	CURHealth = BaseHealth;
@@ -82,7 +83,7 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	CURSPD = BaseSPD;
 	CURSTR = BaseSTR;
 	CURVIT = BaseVIT;
-
+	CURLevelupCheckpoint = BaseLevelupCheckpoint;
 
 }
 
@@ -149,7 +150,7 @@ void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, 
 void AFoodFightersCharacter::LevelUP()
 {
 	// player exp reaches a certain point then player levels up
-	if (CUREXP >= 100) 
+	if (CUREXP >= CURLevelupCheckpoint) 
 	{
 	
 		CURlevel = Baselevel + 1;
@@ -157,11 +158,12 @@ void AFoodFightersCharacter::LevelUP()
 		CURDEF = BaseDEF + FMath::FRandRange(1,10);
 		CURDEX = BaseDEX + FMath::FRandRange(1, 10);
 		CURLUCK = BaseLUCK + FMath::FRandRange(1, 10);
-		CUREXP = BaseEXP + FMath::FRandRange(1, 10);
+		CUREXP = CUREXP - CURLevelupCheckpoint;
 		CURSPD = BaseSPD + FMath::FRandRange(1, 10);
 		CURSTR = BaseSTR + FMath::FRandRange(1, 10);
 		CURVIT = BaseVIT + FMath::FRandRange(1, 10);;
 	
+		CURLevelupCheckpoint += BaseLevelupCheckpoint; // adds 100 to each level up
 	}
 
 }

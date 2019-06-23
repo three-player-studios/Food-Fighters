@@ -63,7 +63,8 @@ public:
 		float BaseEXP;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float randlevl;
-
+	UPROPERTY(VisibleAnywhere, BLueprintReadOnly, Category = Stat) // the goal post of exp needed to level up between levels
+		float BaseLevelupCheckpoint;
 	//Currnet stat
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float CURHealth;
@@ -83,7 +84,8 @@ public:
 		float CURLUCK;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float CUREXP;
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat) // current level up checkpoint 
+		float CURLevelupCheckpoint;
 	//// Player hit box
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class UCapsuleComponent* triggerCapsule;
@@ -101,10 +103,121 @@ public:
 	UFUNCTION()
 		void LevelUP();
 
+// CURRENT STAT GETTERS 
+	UFUNCTION(BlueprintPure, Category = "Character Level") // cur lvl get
+		float getCurrentLevel() const { return CURlevel; }
+		 
+	UFUNCTION(BlueprintPure, Category = "Character Health") // cur health get 
+		float getCurrentHealth() const { return CURHealth; }
 
+	UFUNCTION(BlueprintPure, Category = "Character Defense") // cur def get 
+		float getCurrentDefence() const { return CURDEF; }
 
+	UFUNCTION(BlueprintPure, Category = "Character Dexterity") // cur dex get 
+		float getCurrentDexterity() const { return CURDEX; }
 
+	UFUNCTION(BlueprintPure, Category = "Character Luck") // cur luck get
+		float getCurrentLuck() const { return CURLUCK; }
+	
+	UFUNCTION(BlueprintPure, Category = "Character Exp") // cur exp get
+		float getCurrentEXP() const { return CUREXP; }
 
+	UFUNCTION(BlueprintPure, Category = "Character Speed") // cur SPD get 
+		float getCurrentSpeed() const { return CURSPD; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Strength") // cur STR get
+		float getCurrentStrenght() const { return CURSTR; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Vitality") // cur VIT get 
+		float getCurrentVitality() const { return CURVIT; }
+// CURRENT STAT GETTERS//
+
+// BASE STAT GETTERS 
+	UFUNCTION(BlueprintPure, Category = "Character Level") // base lvl get
+		float getBaseLevel() const { return Baselevel; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Health") // base health get 
+		float getBaseHealth() const { return BaseHealth; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Defense") // Base def get 
+		float getBasetDefence() const { return BaseDEF; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Dexterity") // Base dex get 
+		float getBaseDexterity() const { return BaseDEX; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Luck") // Base luck get
+		float getBaseLuck() const { return BaseLUCK; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Exp") // Base exp get
+		float getBaseEXP() const { return BaseEXP; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Speed") // Base SPD get 
+		float getBaseSpeed() const { return BaseSPD; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Strength") // Base STR get
+		float getBaseStrenght() const { return BaseSTR; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Vitality") // Base VIT get 
+		float getBaseVitality() const { return BaseVIT; }
+// BASE STAT GETTERS//
+
+// CURRENT STAT SETTERS 
+	UFUNCTION(BlueprintCallable, Category = "Character Level")
+		void setCurrentLevel(float newLevel) { CURlevel = newLevel; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Health")
+		void setCurrentHealth(float newHealth) { CURHealth = newHealth; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Defense")
+		void setCurrentDefense(float newDefense) { CURDEF = newDefense; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Dexterity")
+		void setCurrentDexterity(float newDexterity) { CURDEX = newDexterity; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Luck")
+		void setCurrentLuck(float newLuck) { CURLUCK = newLuck; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character EXP")
+		void setCurrentEXP(float newEXP) { CUREXP = newEXP; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Speed") 
+		void setCurrentSpeed(float newSpeed) { CURSPD = newSpeed; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Strength")
+		void setCurrentStrength(float newStrength) { CURSTR = newStrength; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Vitaity")
+		void setCurrentVitality(float newVitality) { CURVIT = newVitality; }
+// CURRENT STAT SETTERS//
+
+// BASE STAT SETTERS
+	UFUNCTION(BlueprintCallable, Category = "Character Level")
+		void setBaseLevel(float newLevel) { Baselevel = newLevel; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Health")
+		void setBaseHealth(float newHealth) { BaseHealth = newHealth; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Defense")
+		void setBaseDefese(float newDefense) { BaseDEF = newDefense; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Dexterity")
+		void setBaseDexterity(float newDexterity) { BaseDEX = newDexterity; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Luck")
+		void setBaseLuck(float newLuck) { BaseLUCK = newLuck; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character EXP")
+		void setBaseEXP(float newEXP) { BaseEXP = newEXP; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Speed")
+		void setBaseSpeed(float newSpeed) { BaseSPD = newSpeed; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Stength")
+		void setBaseStrength(float newStrength) { BaseSTR = newStrength; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Vitality")
+		void setBaseVitality(float newVitaltiy) { BaseVIT = newVitaltiy; }
+// BASE STAT SETTERS//
 protected:
 
 	/** Resets HMD orientation in VR. */
