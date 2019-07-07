@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "FoodFighters/AI_Bot_M.h"
 #include "FoodFightersCharacter.generated.h"
+
 
 
 

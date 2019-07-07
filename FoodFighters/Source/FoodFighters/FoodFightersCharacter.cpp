@@ -69,7 +69,7 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	BaseDEX = 10;
 	BaseLUCK = 10;
 	BaseEXP = 0;
-	BaseSPD = 10;
+	BaseSPD = 500;
 	BaseSTR = 10;
 	BaseVIT = 10;
 	BaseLevelupCheckpoint = 100;
@@ -128,6 +128,9 @@ void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap begin"));
 		}*/
+		if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
+			CURHealth -= 2;
+		}
 	}
 }
 ///arifa added this hit box collision
@@ -140,8 +143,6 @@ void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, 
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap end"));
 		}
-
-
 	}
 
 }
