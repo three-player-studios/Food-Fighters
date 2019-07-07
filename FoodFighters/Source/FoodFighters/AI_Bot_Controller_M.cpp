@@ -48,6 +48,11 @@ AAI_Bot_Controller_M::AAI_Bot_Controller_M()
 	GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &AAI_Bot_Controller_M::OnPlayerDectected);
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
+
+
+	SetGenericTeamId(FGenericTeamId(5));
+
+
 	
 }
 
@@ -88,8 +93,14 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
 	}
 
-	// ai bot will move to the next waypoint if it does not see the player  
+	 //ai bot will move to the next waypoint if it does not see the player  
 	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false )
+	{
+		MoveToActor(Character->NextWaypoint, 5.0f);
+	}
+
+
+	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false)
 	{
 		MoveToActor(Character->NextWaypoint, 5.0f);
 	}
@@ -100,6 +111,8 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 		AFoodFightersCharacter* Player = Cast< AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		MoveToActor(Player, 5.0f);
 	}
+
+
 
 }
 

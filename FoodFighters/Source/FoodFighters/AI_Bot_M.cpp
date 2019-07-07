@@ -35,11 +35,18 @@ AAI_Bot_M::AAI_Bot_M()
 	triggerC->OnComponentEndOverlap.AddDynamic(this, &AAI_Bot_M::OnOverlapEnd);
 
 
+
 }
 
 void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+
+	if (&AFoodFightersCharacter::ActorToWorld)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+
+	}
+	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		if (GEngine)
 		{
@@ -47,11 +54,7 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 		}
 
 
-		if (&AFoodFightersCharacter::ActorToWorld)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
-
-		}
+		
 
 
 		if (&Aitems::ActorToWorld)
@@ -66,18 +69,18 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 
 		}
 
-	}
+	}*/
 }
 
 void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is not hit overlap end"));
 		}
-	}
+	}*/
 }
 
 // Called when the game starts or when spawned

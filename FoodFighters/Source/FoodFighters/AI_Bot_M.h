@@ -19,6 +19,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint* NextWaypoint;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FVector RandomLoc;
+
 	// tells the max of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float EnemyMaxHealth = 30;
@@ -26,6 +29,47 @@ public:
 	// tells the current health of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float EnemyHealthCurrent;
+
+
+	//playername
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		FString EnemyName;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float Baselevel;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseSTR;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseDEF;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseSPD;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseVIT;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseDEX;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseLUCK;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseEXP;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float randlevl;
+
+
+	//Currnet stat
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURSTR;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURDEF;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURSPD;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURVIT;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURDEX;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURLUCK;
+
+
 
 	//// Player hit box
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)

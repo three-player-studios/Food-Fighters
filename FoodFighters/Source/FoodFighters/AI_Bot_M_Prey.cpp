@@ -43,6 +43,7 @@ void AAI_Bot_M_Prey::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy prey is hit overlap begin"));
+			
 		}
 
 	
@@ -52,7 +53,7 @@ void AAI_Bot_M_Prey::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor
 void AAI_Bot_M_Prey::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
 
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		if (GEngine)
 		{
@@ -60,7 +61,7 @@ void AAI_Bot_M_Prey::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor *
 		}
 
 
-	}
+	}*/
 }
 
 // Called when the game starts or when spawned

@@ -39,6 +39,7 @@ public:
 
 
 
+
 	// will dectecte if player is around 
 	UFUNCTION()
 		void OnPlayerDectected(TArray<AActor*> DectectedPlayer);
