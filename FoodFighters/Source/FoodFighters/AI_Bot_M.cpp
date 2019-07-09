@@ -54,7 +54,15 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 		}
 
 
+<<<<<<< HEAD
 		
+=======
+		if (&AFoodFightersCharacter::ActorToWorld)
+		{
+		//	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+
+		}
+>>>>>>> 4ac1e533fa6ebc84c67606fd3f87bc521ae64f6f
 
 
 		if (&Aitems::ActorToWorld)
@@ -65,7 +73,7 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 
 		if (&AAI_Bot_M_Prey::ActorToWorld)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by prey monster  overlap begin"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by prey monster  overlap begin"));
 
 		}
 
