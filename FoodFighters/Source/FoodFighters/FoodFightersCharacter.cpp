@@ -131,6 +131,11 @@ void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp
 		if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
 			CURHealth -= 2;
 		}
+
+
+		if(&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
+			CURHealth -= 2;
+		}
 	}
 }
 ///arifa added this hit box collision

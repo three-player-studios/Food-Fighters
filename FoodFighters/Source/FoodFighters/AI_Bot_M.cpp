@@ -4,21 +4,22 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "Components/SphereComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/BoxComponent.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "FoodFightersCharacter.h"
 #include "items.h"
 #include "AI_Bot_M_Prey.h"
 
+
 // Sets default values
 AAI_Bot_M::AAI_Bot_M()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// will get charater roataion movement and set it at a rate of 600 on y axis  
@@ -27,7 +28,7 @@ AAI_Bot_M::AAI_Bot_M()
 
 
 	triggerC = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
-	triggerC->InitSphereRadius( 96.0f);
+	triggerC->InitSphereRadius(96.0f);
 	triggerC->SetCollisionProfileName(TEXT("trigger"));
 	triggerC->SetupAttachment(RootComponent);
 
@@ -35,6 +36,11 @@ AAI_Bot_M::AAI_Bot_M()
 	triggerC->OnComponentEndOverlap.AddDynamic(this, &AAI_Bot_M::OnOverlapEnd);
 
 
+	Head = CreateDefaultSubobject<UBoxComponent>(TEXT("headComponent"));
+	Head->OnComponentBeginOverlap.AddDynamic(this, &AAI_Bot_M::OnOverlapBegin);
+	Head->OnComponentEndOverlap.AddDynamic(this, &AAI_Bot_M::OnOverlapEnd);
+	Head->SetCollisionProfileName(TEXT("headtrigger"));
+	Head->SetupAttachment(RootComponent);
 
 }
 
@@ -55,7 +61,7 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 
 
 <<<<<<< HEAD
-		
+
 =======
 		if (&AFoodFightersCharacter::ActorToWorld)
 		{
@@ -91,11 +97,24 @@ void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * Othe
 	}*/
 }
 
+void AAI_Bot_M::EDeath()
+{
+	if (EnemyHealthCurrent <= 0)
+	{
+		Destroy();
+		ERespawn();
+	}
+}
+
+void AAI_Bot_M::ERespawn()
+{
+}
+
 // Called when the game starts or when spawned
 void AAI_Bot_M::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame

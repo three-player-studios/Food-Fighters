@@ -75,6 +75,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class USphereComponent* triggerC;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
+		class UBoxComponent* Head;
 
 
 	//// declare overlap begin function
@@ -84,12 +86,17 @@ public:
 	UFUNCTION()
 		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	UFUNCTION()
+		void EDeath();
+
+	UFUNCTION()
+		void ERespawn();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -97,5 +104,5 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 
-	
+
 };

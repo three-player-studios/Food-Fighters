@@ -1,0 +1,53 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#include "Armor.h"
+#include "Components/BoxComponent.h"
+#include "Components/SphereComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
+#include"Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+#include "DrawDebugHelpers.h"
+#include "AI_Bot_M.h"
+#include "AI_Bot_M_Prey.h"
+#include "FoodFightersCharacter.h"
+
+// Sets default values
+AArmor::AArmor()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	ArmorMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ArmorMesh"));
+	ArmorMesh->SetupAttachment(RootComponent);
+
+	ArmorBox = CreateDefaultSubobject<UBoxComponent>(TEXT("	ArmorBoxComponent"));
+	ArmorBox->OnComponentBeginOverlap.AddDynamic(this, &AArmor::OnOverlapBegin);
+	ArmorBox->SetCollisionProfileName(TEXT("ArmorBoxtrigger"));
+	ArmorBox->SetupAttachment(RootComponent);
+}
+
+// Called when the game starts or when spawned
+void AArmor::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AArmor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+void AArmor::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{/*
+	AAI_Bot_M* Eactor;
+	AFoodFightersCharacter* player;*/
+	
+	//if (&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
+	//	player->CURHealth -= Eactor->BaseSTR + player->CURDEF;
+	//}
+}
+
