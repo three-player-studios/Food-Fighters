@@ -10,6 +10,7 @@
 #include "DrawDebugHelpers.h"
 #include "AI_Bot_M.h"
 #include "AI_Bot_M_Prey.h"
+#include "FoodFightersCharacter.h"
 
 // Sets default values
 AWeapons::AWeapons()
@@ -30,6 +31,7 @@ AWeapons::AWeapons()
 void AWeapons::BeginPlay()
 {
 	Super::BeginPlay();
+
 	
 }
 
@@ -44,10 +46,20 @@ void AWeapons::Tick(float DeltaTime)
 
 void AWeapons::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	/*AAI_Bot_M* Character;
-
-	if (&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
-		Character->EnemyHealthCurrent -= 1;
-	}*/
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr)) {
+		if (OtherActor->ActorHasTag(TEXT("Bad"))) {
+			//for (TActorIterator<AStaticMeshActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+			//{
+			//	// Same as with the Object Iterator, access the subclass instance with the * or -> operators.
+			//	AStaticMeshActor *Mesh = *ActorItr;
+			//	ClientMessage(ActorItr->GetName());
+			//	ClientMessage(ActorItr->GetActorLocation().ToString());
+			//	if (ActorItr == AAI_Bot_M && AAI_Bot_M == OtherActor) {
+			//		&ActorItr->TakeDamageNormal;
+			//	}
+			//}
+		}
+	
+	}
 }
 

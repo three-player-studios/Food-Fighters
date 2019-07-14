@@ -131,3 +131,8 @@ void AAI_Bot_M::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+void AAI_Bot_M::TakeDamageNormal() {
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by weapon overlap begin"));
+	EnemyHealthCurrent--;
+}
+
