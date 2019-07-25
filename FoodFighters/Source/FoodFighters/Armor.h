@@ -47,7 +47,13 @@ public:
 		float StatBooost3;;
 
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float StatBooost4;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float StatBooost5;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float StatBooost6;
 
 	// declare overlap begin function
 	UFUNCTION()

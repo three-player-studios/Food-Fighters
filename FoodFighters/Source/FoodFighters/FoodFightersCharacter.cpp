@@ -11,7 +11,9 @@
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "GameFramework/SpringArmComponent.h"
-
+#include "Weapons.h"
+#include "Armor.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
 //////////////////////////////////////////////////////////////////////////
 // AFoodFightersCharacter
 
@@ -55,11 +57,15 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	triggerCapsule->InitCapsuleSize(92.f, 96.0f);
 	triggerCapsule->SetCollisionProfileName(TEXT("trigger"));
 	triggerCapsule->SetupAttachment(RootComponent);
-
+	
 
 
 	triggerCapsule->OnComponentBeginOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapBegin);
 	triggerCapsule->OnComponentEndOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapEnd);
+
+
+
+	BODYMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
 
 
 
@@ -85,6 +91,7 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	CURVIT = BaseVIT;
 	CURLevelupCheckpoint = BaseLevelupCheckpoint;
 
+	CRITCHANCE = CURLUCK + CURlevel - FMath::FRandRange(1, 100);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -124,10 +131,38 @@ void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp
 {
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		/*if (GEngine) 
+
+		AWeapons* Weaponitem = Cast<AWeapons>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+
+		AArmor* Armoritem = Cast<AArmor>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+
+		//if wepons is on the player stats recives a boost
+		if (&AWeapons::WeaponBox) 
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap begin"));
-		}*/
+
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("weapon on hand"));
+			
+		    CURDEX += Weaponitem->StatBooost1 ;
+			CURLUCK += Weaponitem->StatBooost2 + Weaponitem->EffectDanamge;
+			CURSPD += Weaponitem->StatBooost3;
+			CURSTR += Weaponitem->StatBooost4;
+			CURVIT += Weaponitem->StatBooost5;
+			CURDEF += Weaponitem->StatBooost6;
+		}
+
+		//if arrmor is on the player stats recives a boost
+		if (&AArmor::ArmorBox && !&AArmor::ArmorMesh)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("arrmor on body"));
+			CURDEX += Armoritem->StatBooost1;
+			CURSPD += Armoritem->StatBooost2;
+			CURVIT += Armoritem->StatBooost3;
+			CURDEF += Armoritem->StatBooost4;
+			CURHealth += Armoritem->StatBooost5;
+			CURSTR += Armoritem->StatBooost6;
+		}
+
+
 		if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
 			CURHealth -= 2;
 		}

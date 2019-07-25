@@ -7,6 +7,7 @@
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include"Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
 #include "DrawDebugHelpers.h"
 #include "AI_Bot_M.h"
 #include "AI_Bot_M_Prey.h"
@@ -18,10 +19,14 @@ AArmor::AArmor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+
+	ArmorBox = CreateDefaultSubobject<UBoxComponent>(TEXT("	RootComponent"));
+	RootComponent = ArmorBox;
+
 	ArmorMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ArmorMesh"));
 	ArmorMesh->SetupAttachment(RootComponent);
 
-	ArmorBox = CreateDefaultSubobject<UBoxComponent>(TEXT("	ArmorBoxComponent"));
+
 	ArmorBox->OnComponentBeginOverlap.AddDynamic(this, &AArmor::OnOverlapBegin);
 	ArmorBox->SetCollisionProfileName(TEXT("ArmorBoxtrigger"));
 	ArmorBox->SetupAttachment(RootComponent);
@@ -42,12 +47,12 @@ void AArmor::Tick(float DeltaTime)
 }
 
 void AArmor::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
-{/*
-	AAI_Bot_M* Eactor;
-	AFoodFightersCharacter* player;*/
-	
-	//if (&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
-	//	player->CURHealth -= Eactor->BaseSTR + player->CURDEF;
-	//}
+{
+	AFoodFightersCharacter* Player = Cast< AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	AAI_Bot_M* Eactor =  Cast<AAI_Bot_M>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));;
+
+	if (&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
+		Player->CURHealth -= Eactor->BaseSTR +Player->CURDEF;
+	}
 }
 
