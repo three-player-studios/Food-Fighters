@@ -42,6 +42,9 @@ AAI_Bot_M::AAI_Bot_M()
 	Head->SetCollisionProfileName(TEXT("headtrigger"));
 	Head->SetupAttachment(RootComponent);
 
+	EnemyMaxHealth = 30;
+	EnemyHealthCurrent = EnemyMaxHealth;
+
 }
 
 void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
@@ -49,7 +52,7 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 
 	if (&AFoodFightersCharacter::ActorToWorld)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+		/*GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));*/
 
 	}
 	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))

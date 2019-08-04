@@ -132,46 +132,17 @@ void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 
-		AWeapons* Weaponitem = Cast<AWeapons>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-
-		AArmor* Armoritem = Cast<AArmor>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-
-		//if wepons is on the player stats recives a boost
-		if (&AWeapons::WeaponBox) 
-		{
-
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("weapon on hand"));
-			
-		    CURDEX += Weaponitem->StatBooost1 ;
-			CURLUCK += Weaponitem->StatBooost2 + Weaponitem->EffectDanamge;
-			CURSPD += Weaponitem->StatBooost3;
-			CURSTR += Weaponitem->StatBooost4;
-			CURVIT += Weaponitem->StatBooost5;
-			CURDEF += Weaponitem->StatBooost6;
-		}
-
-		//if arrmor is on the player stats recives a boost
-		if (&AArmor::ArmorBox && !&AArmor::ArmorMesh)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("arrmor on body"));
-			CURDEX += Armoritem->StatBooost1;
-			CURSPD += Armoritem->StatBooost2;
-			CURVIT += Armoritem->StatBooost3;
-			CURDEF += Armoritem->StatBooost4;
-			CURHealth += Armoritem->StatBooost5;
-			CURSTR += Armoritem->StatBooost6;
-		}
+		AAI_Bot_M* Eactor = Cast<AAI_Bot_M>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));;
+			if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
+				CURHealth -= Eactor->CURSTR;
+			}
 
 
-		if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
-			CURHealth -= 2;
-		}
-
-
-		if(&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
-			CURHealth -= 2;
-		}
+			if(&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
+				CURHealth -= Eactor->CURSTR;
+			}
 	}
+
 }
 ///arifa added this hit box collision
 void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
@@ -181,7 +152,7 @@ void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, 
 	{
 		if (GEngine)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap end"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap end"));
 		}
 	}
 

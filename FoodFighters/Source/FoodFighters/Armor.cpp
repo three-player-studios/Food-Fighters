@@ -54,5 +54,20 @@ void AArmor::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Other
 	if (&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
 		Player->CURHealth -= Eactor->BaseSTR +Player->CURDEF;
 	}
+
+
+	if (Player->triggerCapsule)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("ammor on body  "));
+
+		Player->CURDEX += StatBooost1;
+		Player->CURLUCK += StatBooost2;
+		Player->CURSPD += StatBooost3;
+		Player->CURSTR += StatBooost4;
+		Player->CURVIT += StatBooost5;
+		Player->CURDEF += StatBooost6;
+	}
+
+
 }
 
