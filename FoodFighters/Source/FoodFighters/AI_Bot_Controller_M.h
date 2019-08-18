@@ -45,6 +45,18 @@ public:
 		void OnPlayerDectected(TArray<AActor*> DectectedPlayer);
 
 
+
+	// will dectecte if item is around 
+	UFUNCTION()
+		void OnitemDectected(TArray<AActor*> DectectedPlayer);
+
+
+
+	// will dectecte if player is around 
+	UFUNCTION()
+		void OnPreyDectected(TArray<AActor*> DectectedPlayer);
+
+
 	// the radius of sight the ai bot can see 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float AIEyeRadius = 500.0f;
@@ -69,9 +81,30 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		bool IsThePlayerDetected = false;
 
+
+	// will dectecte if player is around or not 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		bool IsThePreyDetected = false;
+
+
+	// will dectecte if player is around or not 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		bool IsTheitemDetected = false;
+
+
 	// tells the distance of the player 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPlayer = 0.0f;
+
+	// tells the distance of the player 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float DistanceFromItem = 0.0f;
+
+
+	// tells the distance of the player 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float DistanceFromPrey = 0.0f;
+
 
 
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")

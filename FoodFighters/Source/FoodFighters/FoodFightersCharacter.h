@@ -88,11 +88,20 @@ public:
 		float CUREXP;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat) // current level up checkpoint 
 		float CURLevelupCheckpoint;
+	
+	
 	//// Player hit box
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class UCapsuleComponent* triggerCapsule;
 
 
+	// make mesh component
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class UStaticMeshComponent* BODYMesh;
+
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CRITCHANCE;
 
 	//// declare overlap begin function
 	UFUNCTION()

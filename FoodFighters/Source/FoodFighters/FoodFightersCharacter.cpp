@@ -11,7 +11,9 @@
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "GameFramework/SpringArmComponent.h"
-
+#include "Weapons.h"
+#include "Armor.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
 //////////////////////////////////////////////////////////////////////////
 // AFoodFightersCharacter
 
@@ -55,11 +57,15 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	triggerCapsule->InitCapsuleSize(92.f, 96.0f);
 	triggerCapsule->SetCollisionProfileName(TEXT("trigger"));
 	triggerCapsule->SetupAttachment(RootComponent);
-
+	
 
 
 	triggerCapsule->OnComponentBeginOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapBegin);
 	triggerCapsule->OnComponentEndOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapEnd);
+
+
+
+	BODYMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
 
 
 
@@ -85,6 +91,7 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	CURVIT = BaseVIT;
 	CURLevelupCheckpoint = BaseLevelupCheckpoint;
 
+	CRITCHANCE = CURLUCK + CURlevel - FMath::FRandRange(1, 100);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -124,19 +131,18 @@ void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp
 {
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		/*if (GEngine) 
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap begin"));
-		}*/
-		if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
-			CURHealth -= 2;
-		}
+
+		AAI_Bot_M* Eactor = Cast<AAI_Bot_M>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));;
+			if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
+				CURHealth -= Eactor->CURSTR;
+			}
 
 
-		if(&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
-			CURHealth -= 2;
-		}
+			if(&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
+				CURHealth -= Eactor->CURSTR;
+			}
 	}
+
 }
 ///arifa added this hit box collision
 void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
@@ -146,7 +152,7 @@ void AFoodFightersCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, 
 	{
 		if (GEngine)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap end"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("overlap end"));
 		}
 	}
 

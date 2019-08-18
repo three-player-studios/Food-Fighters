@@ -8,6 +8,7 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
 #include "AI_Bot_M_Prey.h"
 #include "FoodFightersCharacter.h"
+#include "items.h"
 
 
 
@@ -49,11 +50,6 @@ AAI_Bot_Controller_M::AAI_Bot_Controller_M()
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
 
-
-	SetGenericTeamId(FGenericTeamId(5));
-
-
-	
 }
 
 void AAI_Bot_Controller_M::BeginPlay()
@@ -93,23 +89,58 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
 	}
 
-	 //ai bot will move to the next waypoint if it does not see the player  
-	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false )
+
+	// if thre Distance From the item is greater the AIEyeRadius then bot wiil see nothing 
+	if (DistanceFromItem > AIEyeRadius)
 	{
-		MoveToActor(Character->NextWaypoint, 5.0f);
+		IsTheitemDetected = false;
+		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	}
+
+	// if thre Distance From the Prey is greater the AIEyeRadius then bot wiil see nothing 
+	if (DistanceFromPrey > AIEyeRadius)
+	{
+		IsThePreyDetected = false;
+		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
 	}
 
 
-	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false)
+
+	 //ai bot will move to the next waypoint if it does not see the player  
+	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false  && IsTheitemDetected == false && IsThePreyDetected == false)
 	{
 		MoveToActor(Character->NextWaypoint, 5.0f);
+		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+
+
 	}
 
 	// if the player is seen ai bot will chase after player 
-	else if (IsThePlayerDetected == true)
+	else if (IsThePlayerDetected == true )
 	{
-		AFoodFightersCharacter* Player = Cast< AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-		MoveToActor(Player, 5.0f);
+		AFoodFightersCharacter* Player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	
+		if (Character->EnemyHealthCurrent > Character->EnemyHealthCurrent / 2) {
+			MoveToActor(Player, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT("I see the player  must chase"));
+		}
+		else 
+		{
+			MoveToActor(Character->NextWaypoint, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" running away "));
+		}
+
+	}
+
+
+	// if the player is seen ai bot will chase after player 
+	else if (IsTheitemDetected == true)
+	{
+		//Aitems * Item = Cast<Aitems>(U
+	
+		//	MoveToActor(Item, 5.0f);
+		//	UE_LOG(LogTemp, Warning, TEXT("Im hungry must eat "));
+	
 	}
 
 
@@ -140,6 +171,33 @@ void AAI_Bot_Controller_M::OnPlayerDectected(TArray<AActor*> DectectedPlayer)
 	
 	//player is found 
 	IsThePlayerDetected = true;
+}
+
+void AAI_Bot_Controller_M::OnitemDectected(TArray<AActor*> Dectecteditem)
+{
+	//gets distance between ai bot and item 
+	for (size_t i = 0; i < Dectecteditem.Num(); i++)
+	{
+		DistanceFromItem = GetPawn()->GetDistanceTo(Dectecteditem[i]);
+		UE_LOG(LogTemp, Warning, TEXT("I see the item %f "), DistanceFromItem);
+	}
+
+	//item is found 
+	IsTheitemDetected = true;
+}
+
+void AAI_Bot_Controller_M::OnPreyDectected(TArray<AActor*> DectectedPrey)
+{
+	//gets distance between ai bot and Prey
+	for (size_t i = 0; i < DectectedPrey.Num(); i++)
+	{
+		DistanceFromPrey = GetPawn()->GetDistanceTo(DectectedPrey[i]);
+		UE_LOG(LogTemp, Warning, TEXT("I see the prey %f "), DistanceFromPrey);
+	}
+
+	//item is found 
+	IsThePreyDetected = true;
+
 }
 
 void AAI_Bot_Controller_M::AttckSound()

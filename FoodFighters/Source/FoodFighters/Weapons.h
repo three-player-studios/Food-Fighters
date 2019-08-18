@@ -46,12 +46,25 @@ public:
 		float StatBooost3;;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float StatBooost4;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float StatBooost5;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float StatBooost6;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float EffectDanamge;
 	
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		bool attacktrue = false;
 
 	// declare overlap begin function
 	UFUNCTION()
 		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-	
+	UFUNCTION()
+		void Attack();
 };
