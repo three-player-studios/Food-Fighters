@@ -3,12 +3,12 @@
 #include "AI_Bot_Controller_M.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
-#include "AI_Bot_M.h"
 #include "Waypoint.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
 #include "AI_Bot_M_Prey.h"
 #include "FoodFightersCharacter.h"
 #include "items.h"
+
 
 
 
@@ -50,6 +50,11 @@ AAI_Bot_Controller_M::AAI_Bot_Controller_M()
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
 
+
+
+
+
+
 }
 
 void AAI_Bot_Controller_M::BeginPlay()
@@ -77,6 +82,9 @@ void AAI_Bot_Controller_M::Possess(APawn * Pawn)
 void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 {
 	Super::Tick(DeltaSecounds);
+
+
+
 
 	//Makes a pointers of my ai bot and make into a pawn  
 	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());

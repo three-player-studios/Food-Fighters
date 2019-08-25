@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "Sound/SoundCue.h"
+#include "AI_Bot_M.h"
 #include "AI_Bot_Controller_M.generated.h"
 
 /**
@@ -31,6 +32,7 @@ public:
 	virtual FRotator GetControlRotation() const override;
 
 
+
 	void AttckSound();
 	void WalkSound();
 	void DeathSound();
@@ -40,21 +42,20 @@ public:
 
 
 
+
 	// will dectecte if player is around 
 	UFUNCTION()
 		void OnPlayerDectected(TArray<AActor*> DectectedPlayer);
 
-
-
 	// will dectecte if item is around 
 	UFUNCTION()
-		void OnitemDectected(TArray<AActor*> DectectedPlayer);
+		void OnitemDectected(TArray<AActor*> Dectecteditem);
 
 
 
 	// will dectecte if player is around 
 	UFUNCTION()
-		void OnPreyDectected(TArray<AActor*> DectectedPlayer);
+		void OnPreyDectected(TArray<AActor*> DectectedPrey);
 
 
 	// the radius of sight the ai bot can see 
@@ -96,14 +97,22 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPlayer = 0.0f;
 
-	// tells the distance of the player 
+	
+	
+
+	// tells the distance of the item 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromItem = 0.0f;
 
 
-	// tells the distance of the player 
+	// tells the distance of the prey 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPrey = 0.0f;
+
+
+
+
+
 
 
 

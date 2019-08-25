@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Engine/World.h"
 #include "AI_Bot_M.generated.h"
+
 
 UCLASS()
 class FOODFIGHTERS_API AAI_Bot_M : public ACharacter
@@ -18,9 +20,6 @@ public:
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint* NextWaypoint;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FVector RandomLoc;
 
 	// tells the max of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
@@ -68,6 +67,34 @@ public:
 		float CURDEX;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float CURLUCK;
+
+
+	//what to spawn
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		TSubclassOf<ACharacter> EnemyBotspawned;
+
+
+	// tells the spawn loc Y
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float SpawnY_MAX = 30.0f;
+
+	// tells the spawn loc Y
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float SpawnY_MIN = 0.0f;
+
+
+	// tells the spawn loc X
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float SpawnX_MIN = 0.0f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float SpawnX_MAX = 30.0f;
+
+
+
+	// tells the spawn loc  Z
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float SpawnZ = 100.0f;
 
 
 

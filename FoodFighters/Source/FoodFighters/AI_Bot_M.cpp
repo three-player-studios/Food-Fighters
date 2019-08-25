@@ -14,7 +14,8 @@
 #include "FoodFightersCharacter.h"
 #include "items.h"
 #include "AI_Bot_M_Prey.h"
-
+#include "Runtime/Engine/Classes/Engine/World.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 AAI_Bot_M::AAI_Bot_M()
@@ -102,16 +103,34 @@ void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * Othe
 
 void AAI_Bot_M::EDeath()
 {
-	if (EnemyHealthCurrent <= 0)
+	if (EnemyHealthCurrent <= 0) 
 	{
-		Destroy();
 		ERespawn();
+		Destroy();
+		
 	}
 }
 
 void AAI_Bot_M::ERespawn()
 {
+	UE_LOG(LogTemp, Warning, TEXT(" my loctaon %s "), Spawnpos);
+
+	float RandX = FMath::FRandRange(SpawnX_MIN, SpawnX_MAX);
+	float RandY = FMath::FRandRange(SpawnY_MIN, SpawnY_MAX);
+
+	FVector Spawnpos = FVector(RandX, RandY, SpawnZ);
+	FVector Spawnrot = FVector(0, 0, 0);
+
+	AAI_Bot_M* NewActor = GetWorld()->SpawnActor<AAI_Bot_M>(GetClass(), Spawnpos, FRotator::ZeroRotator);
+
+
+	
+	
+
 }
+
+
+
 
 // Called when the game starts or when spawned
 void AAI_Bot_M::BeginPlay()
@@ -124,6 +143,11 @@ void AAI_Bot_M::BeginPlay()
 void AAI_Bot_M::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	EnemyHealthCurrent -= DeltaTime*4;
+	UE_LOG(LogTemp, Warning, TEXT(" my health is %f "), EnemyHealthCurrent);
+
+	EDeath();
 
 }
 
