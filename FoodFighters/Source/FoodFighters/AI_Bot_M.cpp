@@ -113,7 +113,7 @@ void AAI_Bot_M::EDeath()
 
 void AAI_Bot_M::ERespawn()
 {
-	UE_LOG(LogTemp, Warning, TEXT(" my loctaon %s "), Spawnpos);
+//	UE_LOG(LogTemp, Warning, TEXT(" my loctaon %s "), Spawnpos);
 
 	float RandX = FMath::FRandRange(SpawnX_MIN, SpawnX_MAX);
 	float RandY = FMath::FRandRange(SpawnY_MIN, SpawnY_MAX);
