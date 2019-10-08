@@ -121,6 +121,7 @@ void AFoodFightersCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AFoodFightersCharacter::OnResetVR);
+	PlayerInputComponent->
 }
 
 
