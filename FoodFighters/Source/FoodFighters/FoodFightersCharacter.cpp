@@ -75,7 +75,7 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	BaseDEX = 10;
 	BaseLUCK = 10;
 	BaseEXP = 0;
-	BaseSPD = 500;
+	BaseSPD = 3000;
 	BaseSTR = 10;
 	BaseVIT = 10;
 	BaseLevelupCheckpoint = 100;
@@ -121,6 +121,7 @@ void AFoodFightersCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AFoodFightersCharacter::OnResetVR);
+	PlayerInputComponent->
 }
 
 
