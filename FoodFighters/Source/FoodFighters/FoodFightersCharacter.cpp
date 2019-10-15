@@ -239,3 +239,13 @@ void AFoodFightersCharacter::MoveRight(float Value)
 		AddMovementInput(Direction, Value);
 	}
 }
+
+void AFoodFightersCharacter::AddToInventory(Aitems* Item)
+{
+	Inventory.Add(Item);
+}
+
+void AFoodFightersCharacter::UpdateInventory()
+{
+	OnUpdateInventory.Broadcast(Inventory);
+}
