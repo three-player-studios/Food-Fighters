@@ -5,10 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "FoodFighters/AI_Bot_M.h"
-#include "items.h"
 #include "FoodFightersCharacter.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FUpdateInventoryDelegate, const TArray<Aitems*>&, InventoryItems);
+
+
 
 UCLASS(config=Game)
 class AFoodFightersCharacter : public ACharacter
@@ -257,20 +257,6 @@ protected:
 
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
-
-private:
-	UPROPERTY()
-		TArray<Aitems*> Inventory;
-
-public:
-	UFUNCTION()
-		void AddToInventory(Aitems* Item);
-
-	UFUNCTION(BlueprintCallable)
-		void UpdateInventory();
-
-	UPROPERTY(BlueprintAssignable, Category = "Pickup")
-		FUpdateInventoryDelegate OnUpdateInventory;
 
 protected:
 	// APawn interface
