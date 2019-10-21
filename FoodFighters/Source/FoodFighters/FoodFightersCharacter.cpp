@@ -121,7 +121,7 @@ void AFoodFightersCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AFoodFightersCharacter::OnResetVR);
-	PlayerInputComponent->
+	//PlayerInputComponent->
 }
 
 
@@ -239,4 +239,14 @@ void AFoodFightersCharacter::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
+}
+
+void AFoodFightersCharacter::AddToInventory(Aitems* Item)
+{
+	Inventory.Add(Item);
+}
+
+void AFoodFightersCharacter::UpdateInventory()
+{
+	OnUpdateInventory.Broadcast(Inventory);
 }

@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Weaponshop.generated.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -16,7 +15,7 @@
 #include "Engine/CollisionProfile.h"
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
-#include "FoodFightersCharacter.generated.h"
+#include "Weaponshop.generated.h"
 
 UCLASS()
 class FOODFIGHTERS_API AWeaponshop : public AActor

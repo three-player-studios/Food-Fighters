@@ -3,8 +3,10 @@
 #include "items.h"
 #include "DrawDebugHelpers.h"
 #include "Components/SphereComponent.h"
-#include"Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "FoodFightersCharacter.h"
 
 
 // my genral log 
@@ -37,8 +39,15 @@ void Aitems::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Other
 
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		UE_LOG(LogMyGame, Log, TEXT("item"), PonitsystemCount);
-		Destroy();
+		UE_LOG(LogMyGame, Log, TEXT("Picked up: %s"), *Name, PonitsystemCount);
+		// Remove Object
+		AFoodFightersCharacter* player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
+		if (player)
+		{
+			player->AddToInventory(this);
+			Destroy();
+		}
+		player->UpdateInventory();
 	}
 }
 

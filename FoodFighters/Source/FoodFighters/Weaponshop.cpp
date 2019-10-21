@@ -21,20 +21,6 @@ AWeaponshop::AWeaponshop()
 
 }
 
-// Called when the game starts or when spawned
-void AWeaponshop::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AWeaponshop::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 void AWeaponshop::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	UWorld* World = GetWorld();
