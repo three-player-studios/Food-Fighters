@@ -257,8 +257,8 @@ protected:
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
 private:
-		UPROPERTY()
-			TArray<Aitems*> Inventory;
+	UPROPERTY()
+		TArray<Aitems*> Inventory;
 
 public:
 	UFUNCTION()

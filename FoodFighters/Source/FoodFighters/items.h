@@ -6,11 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "items.generated.h"
 
-
-//General Log
-DECLARE_LOG_CATEGORY_EXTERN(LogMyGame, Log, All);
-
-
 UCLASS()
 class FOODFIGHTERS_API Aitems : public AActor
 {
