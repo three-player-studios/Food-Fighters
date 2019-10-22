@@ -8,9 +8,6 @@
 #include "items.h"
 #include "FoodFightersCharacter.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FUpdateInventoryDelegate, const TArray<Aitems*>&, InventoryItems);
-
-
 UCLASS(config=Game)
 class AFoodFightersCharacter : public ACharacter
 {
@@ -268,10 +265,7 @@ public:
 		void AddToInventory(Aitems* Item);
 
 	UFUNCTION(BlueprintCallable)
-		void UpdateInventory();
-
-	UPROPERTY(BlueprintAssignable, Category = "Pickup")
-		FUpdateInventoryDelegate OnUpdateInventory;
+		TArray<Aitems*> GetInventory();
 
 protected:
 	// APawn interface

@@ -246,7 +246,7 @@ void AFoodFightersCharacter::AddToInventory(Aitems* Item)
 	Inventory.Add(Item);
 }
 
-void AFoodFightersCharacter::UpdateInventory()
+TArray<Aitems*> AFoodFightersCharacter::GetInventory()
 {
-	OnUpdateInventory.Broadcast(Inventory);
+	return Inventory;
 }
