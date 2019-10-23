@@ -30,6 +30,8 @@ AArmor::AArmor()
 	ArmorBox->OnComponentBeginOverlap.AddDynamic(this, &AArmor::OnOverlapBegin);
 	ArmorBox->SetCollisionProfileName(TEXT("ArmorBoxtrigger"));
 	ArmorBox->SetupAttachment(RootComponent);
+
+
 }
 
 // Called when the game starts or when spawned
