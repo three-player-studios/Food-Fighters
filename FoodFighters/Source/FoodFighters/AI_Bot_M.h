@@ -23,7 +23,7 @@ public:
 
 	// tells the max of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float EnemyMaxHealth;
+		float EnemyMaxHealth ;
 
 	// tells the current health of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")

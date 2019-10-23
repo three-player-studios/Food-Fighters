@@ -106,7 +106,7 @@ void AAI_Bot_M::EDeath()
 	if (EnemyHealthCurrent <= 0)
 	{
 		//ERespawn();
-		Destroy();
+		//Destroy();
 
 	}
 }
