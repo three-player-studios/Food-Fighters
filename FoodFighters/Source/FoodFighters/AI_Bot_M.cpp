@@ -103,17 +103,17 @@ void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * Othe
 
 void AAI_Bot_M::EDeath()
 {
-	if (EnemyHealthCurrent <= 0) 
+	if (EnemyHealthCurrent <= 0)
 	{
-		ERespawn();
+		//ERespawn();
 		Destroy();
-		
+
 	}
 }
 
 void AAI_Bot_M::ERespawn()
 {
-//	UE_LOG(LogTemp, Warning, TEXT(" my loctaon %s "), Spawnpos);
+	//	UE_LOG(LogTemp, Warning, TEXT(" my loctaon %s "), Spawnpos);
 
 	float RandX = FMath::FRandRange(SpawnX_MIN, SpawnX_MAX);
 	float RandY = FMath::FRandRange(SpawnY_MIN, SpawnY_MAX);
@@ -124,8 +124,8 @@ void AAI_Bot_M::ERespawn()
 	AAI_Bot_M* NewActor = GetWorld()->SpawnActor<AAI_Bot_M>(GetClass(), Spawnpos, FRotator::ZeroRotator);
 
 
-	
-	
+
+
 
 }
 
@@ -144,10 +144,10 @@ void AAI_Bot_M::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	EnemyHealthCurrent -= DeltaTime*4;
-	UE_LOG(LogTemp, Warning, TEXT(" my health is %f "), EnemyHealthCurrent);
+	//EnemyHealthCurrent -= DeltaTime*4;
+	//UE_LOG(LogTemp, Warning, TEXT(" my health is %f "), EnemyHealthCurrent);
 
-	EDeath();
+	////EDeath();
 
 }
 
