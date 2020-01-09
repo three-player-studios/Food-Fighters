@@ -14,6 +14,9 @@
 #include "Weapons.h"
 #include "Armor.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
+#include "DrawDebugHelpers.h"
+#include "KitchenDesk.h"
+
 //////////////////////////////////////////////////////////////////////////
 // AFoodFightersCharacter
 
@@ -120,7 +123,6 @@ void AFoodFightersCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AFoodFightersCharacter::OnResetVR);
-	//PlayerInputComponent->
 }
 
 

@@ -15,6 +15,8 @@ ANPC_AI_Bot::ANPC_AI_Bot()
 void ANPC_AI_Bot::BeginPlay()
 {
 	Super::BeginPlay();
+
+
 	
 }
 
@@ -22,13 +24,6 @@ void ANPC_AI_Bot::BeginPlay()
 void ANPC_AI_Bot::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-}
-
-// Called to bind functionality to input
-void ANPC_AI_Bot::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
 
