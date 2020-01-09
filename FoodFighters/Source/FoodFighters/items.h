@@ -19,9 +19,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		FString Name;
 
-	// image of the object in menus
+	// image of the object
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		UTexture2D* Image;
+
+	// amount of item
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
+		int Amount;
 
 	UPROPERTY(EditAnywhere)
 		float PonitsystemCount;

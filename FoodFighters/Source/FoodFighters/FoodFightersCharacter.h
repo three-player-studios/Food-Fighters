@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "FoodFighters/AI_Bot_M.h"
-#include "items.h"
+#include "FoodFighters/Armor.h"
+#include "FoodFighters/items.h"
+#include "FoodFighters/Weapons.h"
 #include "FoodFightersCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -37,14 +39,39 @@ public:
 
 
 
-	//PLayer stats and intreraction 
-	//playername
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
-		FString Playername;
+	// player stats and intreraction 
+	// player name
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
+		FString PlayerName;
+	// player image
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
+		UTexture2D* PlayerImage;
+	// player image
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
+		AArmor* HatArmor;
+	// player image
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
+		AArmor* BodyArmor;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
+		AWeapons* MainWeapon;
+	// player image
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
+		AWeapons* SubWeapon;
+	// player inventory
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
+		TArray<Aitems*> Inventory;
+	// player inventory limit
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
+		int InventoryMaxSize;
+	// player inventory amount
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
+		int InventoryCurrentSize;
 
 	//base stat
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float BaseHealth;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseStamina;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float Baselevel ;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
@@ -68,6 +95,8 @@ public:
 	//Currnet stat
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float CURHealth;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURStamina;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float CURlevel;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
@@ -119,6 +148,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Character Health") // cur health get 
 		float getCurrentHealth() const { return CURHealth; }
 
+	UFUNCTION(BlueprintPure, Category = "Character Stamina") // cur stamina get 
+		float getCurrentStamina() const { return CURStamina; }
+
 	UFUNCTION(BlueprintPure, Category = "Character Defense") // cur def get 
 		float getCurrentDefence() const { return CURDEF; }
 
@@ -147,6 +179,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Character Health") // base health get 
 		float getBaseHealth() const { return BaseHealth; }
+
+	UFUNCTION(BlueprintPure, Category = "Character Stamina") // base stamina get 
+		float getBaseStamina() const { return BaseStamina; }
 
 	UFUNCTION(BlueprintPure, Category = "Character Defense") // Base def get 
 		float getBasetDefence() const { return BaseDEF; }
@@ -177,6 +212,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Character Health")
 		void setCurrentHealth(float newHealth) { CURHealth = newHealth; }
 
+	UFUNCTION(BlueprintCallable, Category = "Character Stamina")
+		void setCurrentStamina(float newStamina) { CURStamina = newStamina; }
+
 	UFUNCTION(BlueprintCallable, Category = "Character Defense")
 		void setCurrentDefense(float newDefense) { CURDEF = newDefense; }
 
@@ -206,6 +244,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Character Health")
 		void setBaseHealth(float newHealth) { BaseHealth = newHealth; }
 
+	UFUNCTION(BlueprintCallable, Category = "Character Stamina")
+		void setBaseStamina(float newStamina) { BaseStamina = newStamina; }
+
 	UFUNCTION(BlueprintCallable, Category = "Character Defense")
 		void setBaseDefese(float newDefense) { BaseDEF = newDefense; }
 
@@ -226,6 +267,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Character Vitality")
 		void setBaseVitality(float newVitaltiy) { BaseVIT = newVitaltiy; }
+
+	
+
 // BASE STAT SETTERS//
 protected:
 
@@ -256,17 +300,6 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
-private:
-	UPROPERTY()
-		TArray<Aitems*> Inventory;
-
-public:
-	UFUNCTION()
-		void AddToInventory(Aitems* Item);
-
-	UFUNCTION(BlueprintCallable)
-		TArray<Aitems*> GetInventory();
-
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -277,5 +310,10 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	/** Inventory Functions **/
+	UFUNCTION()
+		void AddToInventory(Aitems* Item);
+	UFUNCTION(BlueprintCallable)
+		TArray<Aitems*> GetInventory();
 };
 

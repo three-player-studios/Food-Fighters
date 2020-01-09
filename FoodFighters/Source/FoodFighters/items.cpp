@@ -37,7 +37,7 @@ void Aitems::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Other
 		if (player)
 		{
 			player->AddToInventory(this);
-			Destroy();
+			// Destroy();
 		}
 	}
 }
