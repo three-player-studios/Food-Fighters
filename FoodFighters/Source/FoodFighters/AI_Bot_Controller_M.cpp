@@ -78,8 +78,46 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 {
 	Super::Tick(DeltaSecounds);
 
-	OnPlayerFound();
+	/*OnPlayerFound();*/
 	//OnPreyFound();
+
+	//Makes a pointers of my ai bot and make into a pawn  
+	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
+
+
+	////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	if (DistanceFromPlayer > AIEyeRadius)
+	{
+		IsThePlayerDetected = false;
+		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	}
+
+	//ai bot will move to the next waypoint if it does not see the player  
+	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false)
+	{
+		MoveToActor(Character->NextWaypoint, 5.0f);
+		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+	}
+	else if (IsThePlayerDetected == true) 
+	{
+		AFoodFightersCharacter* Player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+		MoveToActor(Player, 5.0f);
+	}
+
+	//// if the player is seen ai bot will chase after player 
+	if (Character->EnemyHealthCurrent > Character->EnemyMaxHealth / 2 && IsThePlayerDetected == true)
+	{
+		AFoodFightersCharacter* Player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+		MoveToActor(Player, 5.0f);
+		UE_LOG(LogTemp, Warning, TEXT("I can figt"));
+	}
+
+	else if (Character->EnemyHealthCurrent < Character->EnemyMaxHealth / 2 && IsThePlayerDetected == true)
+	{
+		MoveToActor(Character->NextWaypoint, 5.0f);
+		UE_LOG(LogTemp, Warning, TEXT(" running away "));
+	}
+
 }
 
 FRotator AAI_Bot_Controller_M::GetControlRotation() const
@@ -124,37 +162,41 @@ void AAI_Bot_Controller_M::OnPreyDectected(TArray<AActor*> DectectedPrey)
 void AAI_Bot_Controller_M::OnPlayerFound()
 {
 
-	//Makes a pointers of my ai bot and make into a pawn  
-	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
+	////Makes a pointers of my ai bot and make into a pawn  
+	//AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
 
-	//// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
-	if (DistanceFromPlayer > AIEyeRadius)
-	{
-		IsThePlayerDetected = false;
-		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
-	}
+	////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	//if (DistanceFromPlayer > AIEyeRadius)
+	//{
+	//	IsThePlayerDetected = false;
+	//	UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	//}
 
-	//ai bot will move to the next waypoint if it does not see the player  
-	if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false)
-	{
-		MoveToActor(Character->NextWaypoint, 5.0f);
-		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
-	}
-
+	////ai bot will move to the next waypoint if it does not see the player  
+	//if (Character->NextWaypoint != nullptr && IsThePlayerDetected == false)
+	//{
+	//	MoveToActor(Character->NextWaypoint, 5.0f);
+	//	UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+	//}
+	//else if (IsThePlayerDetected == true) 
+	//{
+	//	AFoodFightersCharacter* Player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	//	MoveToActor(Player, 5.0f);
+	//}
 
 	////// if the player is seen ai bot will chase after player 
-	if (Character->EnemyHealthCurrent > Character->EnemyMaxHealth / 2 && IsThePlayerDetected == true)
-	{
-		AFoodFightersCharacter* Player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-		MoveToActor(Player, 5.0f);
-		UE_LOG(LogTemp, Warning, TEXT("I can figt"));
-	}
+	//if (Character->EnemyHealthCurrent > Character->EnemyMaxHealth / 2 && IsThePlayerDetected == true)
+	//{
+	//	AFoodFightersCharacter* Player = Cast<AFoodFightersCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	//	MoveToActor(Player, 5.0f);
+	//	UE_LOG(LogTemp, Warning, TEXT("I can figt"));
+	//}
 
-	else if (Character->EnemyHealthCurrent < Character->EnemyMaxHealth / 2 && IsThePlayerDetected == true)
-	{
-		MoveToActor(Character->NextWaypoint, 5.0f);
-		UE_LOG(LogTemp, Warning, TEXT(" running away "));
-	}
+	//else if (Character->EnemyHealthCurrent < Character->EnemyMaxHealth / 2 && IsThePlayerDetected == true)
+	//{
+	//	MoveToActor(Character->NextWaypoint, 5.0f);
+	//	UE_LOG(LogTemp, Warning, TEXT(" running away "));
+	//}
 }
 
 void AAI_Bot_Controller_M::OnPreyFound()
