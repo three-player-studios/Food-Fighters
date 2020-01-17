@@ -3,8 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Classes/Engine/World.h"
 #include "GameFramework/Actor.h"
+#include "ObjectPool.h"
+#include "Water.h"
 #include "Spawn.generated.h"
 
 UCLASS()
@@ -24,8 +25,23 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//what to spawn
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		TSubclassOf<ACharacter> NPCBotspawned;
-	
+private:
+	float GetLifeSpan();
+	class UBoxComponent* Spawnvol;
+
+	UPROPERTY(EditAnywhere, Category = "object")
+		UObjectPool* Objectpoler;
+
+	UPROPERTY(EditAnywhere, Category = "object")
+		bool trigger;
+
+	UPROPERTY(EditAnywhere, Category = "object")
+		float TimeSpan  = 5;
+
+	UPROPERTY(EditAnywhere, Category = "object")
+		float SpawnCooldown = 5;
+
+	FTimerHandle SpawnbCooldownTime;
+	void SpawnObj();
+
 };
