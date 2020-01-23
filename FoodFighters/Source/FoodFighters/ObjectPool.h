@@ -33,4 +33,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = "object")
 		int Sizeofpool = 20;
 	TArray<AWater*> Pool;
+
+
 };
