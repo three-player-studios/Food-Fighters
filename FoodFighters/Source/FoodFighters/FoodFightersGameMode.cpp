@@ -3,6 +3,7 @@
 #include "FoodFightersGameMode.h"
 #include "FoodFightersCharacter.h"
 #include "UObject/ConstructorHelpers.h"
+#include "../Plugins/TimeManager/Source/TimeManager/Public/TimeManager.h"
 
 AFoodFightersGameMode::AFoodFightersGameMode()
 {
