@@ -69,35 +69,6 @@ public:
 		float CURLUCK;
 
 
-	//what to spawn
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		TSubclassOf<ACharacter> EnemyBotspawned;
-
-
-	// tells the spawn loc Y
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float SpawnY_MAX = 30.0f;
-
-	// tells the spawn loc Y
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float SpawnY_MIN = 0.0f;
-
-
-	// tells the spawn loc X
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float SpawnX_MIN = 0.0f;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float SpawnX_MAX = 30.0f;
-
-
-
-	// tells the spawn loc  Z
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float SpawnZ = 100.0f;
-
-
-
 	//// Player hit box
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class USphereComponent* triggerC;

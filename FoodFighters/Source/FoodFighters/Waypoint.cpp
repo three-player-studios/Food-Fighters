@@ -42,13 +42,17 @@ void AWaypoint::Tick(float DeltaTime)
 void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	AAI_Bot_M* Character = nullptr;
+
+	//neew
+	full = true;
 	if (OtherActor != nullptr)
 	{
-
+	
 		Character = Cast<AAI_Bot_M>(OtherActor);
 		if (Character != nullptr)
 		{
-			Character->NextWaypoint = NextWaypoint;
+				Character->NextWaypoint = NextWaypoint;
+			
 		}
 	}
 }

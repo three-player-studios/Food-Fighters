@@ -28,6 +28,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AWaypoint* NextWaypoint;
 
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool full;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
