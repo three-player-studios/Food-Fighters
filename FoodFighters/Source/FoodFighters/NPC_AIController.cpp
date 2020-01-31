@@ -5,7 +5,7 @@
 #include "Perception/AISenseConfig_Sight.h"
 #include "Waypoint.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
-#include "items.h"
+#include "Food.h"
 #include "NPCCharacter.h"
 ANPC_AIController::ANPC_AIController()
 {
@@ -49,14 +49,50 @@ ANPC_AIController::ANPC_AIController()
 
 void ANPC_AIController::BeginPlay()
 {
+	//comfirms if PerceptionComponent is working 
+	if (GetPerceptionComponent() != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("All System Set"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("All System not Set"));
+
+	}
 }
 
 void ANPC_AIController::Possess(APawn * Pawn)
 {
+
+
+
 }
 
 void ANPC_AIController::Tick(float DeltaSecounds)
 {
+	ANPCCharacter* NPCChar = Cast<	ANPCCharacter>(GetPawn());
+
+	////// if thre Distance From the food is greater the AIEyeRadius then bot wiil see nothing 
+	if (DistanceFromFood > AIEyeRadius)
+	{
+		IsTheFoodDetected = false;
+		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep waiting"));
+	}
+
+	//ai bot will move to the next waypoint if the these conditon are done 
+	if (NPCChar->NextWaypoint != nullptr && IsTheFoodDetected == false && NPCChar->CURwaittime > 0)
+	{
+		MoveToActor(NPCChar->NextWaypoint, 5.0f);
+		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+	}
+
+
+	if (NPCChar->CURwaittime < 0) 
+	{
+	
+		MoveToActor(NPCChar->NextWaypoint, 5.0f);
+
+	}
 }
 
 FRotator ANPC_AIController::GetControlRotation() const
@@ -66,4 +102,13 @@ FRotator ANPC_AIController::GetControlRotation() const
 
 void ANPC_AIController::OnFoodDectected(TArray<AActor*> DectectedPlayer)
 {
+	//gets distance between ai bot and player 
+	for (size_t i = 0; i < DectectedFood.Num(); i++)
+	{
+		DistanceFromFood = GetPawn()->GetDistanceTo(DectectedFood[i]);
+
+		UE_LOG(LogTemp, Warning, TEXT("I see the food %f "), DistanceFromFood);
+	}
+	//food is found 
+	IsTheFoodDetected = true;
 }

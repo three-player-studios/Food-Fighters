@@ -113,19 +113,6 @@ void AAI_Bot_M::EDeath()
 
 void AAI_Bot_M::ERespawn()
 {
-	//	UE_LOG(LogTemp, Warning, TEXT(" my loctaon %s "), Spawnpos);
-
-	float RandX = FMath::FRandRange(SpawnX_MIN, SpawnX_MAX);
-	float RandY = FMath::FRandRange(SpawnY_MIN, SpawnY_MAX);
-
-	FVector Spawnpos = FVector(RandX, RandY, SpawnZ);
-	FVector Spawnrot = FVector(0, 0, 0);
-
-	AAI_Bot_M* NewActor = GetWorld()->SpawnActor<AAI_Bot_M>(GetClass(), Spawnpos, FRotator::ZeroRotator);
-
-
-
-
 
 }
 
