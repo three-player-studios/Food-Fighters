@@ -6,11 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "items.generated.h"
 
-
-//General Log
-DECLARE_LOG_CATEGORY_EXTERN(LogMyGame, Log, All);
-
-
 UCLASS()
 class FOODFIGHTERS_API Aitems : public AActor
 {
@@ -24,8 +19,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		FString Name;
 
+	// image of the object
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		UTexture2D* Image;
+
+	// amount of item
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
+		int Amount;
 
 	UPROPERTY(EditAnywhere)
 		float PonitsystemCount;
@@ -39,14 +39,13 @@ public:
 		class UStaticMeshComponent* MyMesh;
 
 	UPROPERTY(EditAnywhere)
-		float SphereRadius;
+	float SphereRadius;
 
-	// called when the objected is interacted with
-	UFUNCTION()
-		virtual void OnInteract();
 
 	// declare overlap begin function
 	UFUNCTION()
 		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+	
+	
 };
