@@ -22,10 +22,6 @@ AFood::AFood()
 
 	MyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("My Mesh"));
 	MyMesh->SetupAttachment(RootComponent);
-
-	PointsItem->OnComponentBeginOverlap.AddDynamic(this, &AFood::OnOverlapBegin);
-
-
 }
 
 // Called when the game starts or when spawned
@@ -40,20 +36,5 @@ void AFood::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-}
-
-void AFood::OnInteract()
-{
-
-}
-
-void AFood::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
-{
-
-
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
-	{
-		OnInteract();
-	}
 }
 
