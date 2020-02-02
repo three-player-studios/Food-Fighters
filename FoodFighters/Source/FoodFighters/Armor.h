@@ -23,10 +23,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// name of the object
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
+		FString Name;
 
+	// image of the object
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
+		UTexture2D* Image;
 
 	//// Player hit box
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class UBoxComponent* ArmorBox;
 

@@ -54,30 +54,24 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 
+	/////stuff matthew added
+	InventoryMaxSize = 30;
+	InventoryCurrentSize = 0;
 
 	/////stuff arifa added
 	triggerCapsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("RootComponent"));
 	triggerCapsule->InitCapsuleSize(92.f, 96.0f);
 	triggerCapsule->SetCollisionProfileName(TEXT("trigger"));
 	triggerCapsule->SetupAttachment(RootComponent);
-	
-
 
 	triggerCapsule->OnComponentBeginOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapBegin);
 	triggerCapsule->OnComponentEndOverlap.AddDynamic(this, &AFoodFightersCharacter::OnOverlapEnd);
 
-
-
 	BODYMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
-
-
-
-
-
-
 
 	Baselevel = 0;
 	BaseHealth = 100;
+	BaseStamina = 100;
 	BaseDEF = 10;
 	BaseDEX = 10;
 	BaseLUCK = 10;
@@ -89,6 +83,7 @@ AFoodFightersCharacter::AFoodFightersCharacter()
 
 	CURlevel = Baselevel;
 	CURHealth = BaseHealth;
+	CURStamina = BaseStamina;
 	CURDEF = BaseDEF;
 	CURDEX = BaseDEX;
 	CURLUCK = BaseLUCK;
@@ -249,10 +244,26 @@ void AFoodFightersCharacter::MoveRight(float Value)
 
 void AFoodFightersCharacter::AddToInventory(Aitems* Item)
 {
-	Inventory.Add(Item);
+	bool inInventory = false;
+	for (int i = 0; i < InventoryCurrentSize; i++) {
+		if (Item->Name == Inventory[i]->Name) {
+			Inventory[i]->Amount += Item->Amount;
+			if (Inventory[i]->Amount > 10) {
+				Inventory[i]->Amount = 10;
+			}
+			inInventory = true;
+		}
+	}
+	if (inInventory == false) {
+		if (InventoryCurrentSize == InventoryMaxSize) {
+			Inventory.Add(Item);
+			InventoryCurrentSize += 1;
+			Item->Destroy();
+		}
+	}
 }
 
-void AFoodFightersCharacter::UpdateInventory()
+TArray<Aitems*> AFoodFightersCharacter::GetInventory()
 {
-	OnUpdateInventory.Broadcast(Inventory);
+	return Inventory;
 }
