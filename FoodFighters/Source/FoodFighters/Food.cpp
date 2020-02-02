@@ -42,10 +42,6 @@ void AFood::Tick(float DeltaTime)
 
 }
 
-void AFood::OnInteract()
-{
-
-}
 
 void AFood::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
@@ -53,7 +49,7 @@ void AFood::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherA
 
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		OnInteract();
+
 	}
 }
 

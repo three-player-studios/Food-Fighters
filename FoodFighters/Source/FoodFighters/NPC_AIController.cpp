@@ -103,12 +103,12 @@ FRotator ANPC_AIController::GetControlRotation() const
 void ANPC_AIController::OnFoodDectected(TArray<AActor*> DectectedPlayer)
 {
 	//gets distance between ai bot and player 
-	for (size_t i = 0; i < DectectedFood.Num(); i++)
-	{
-		DistanceFromFood = GetPawn()->GetDistanceTo(DectectedFood[i]);
+	//for (size_t i = 0; i < DectectedFood.Num(); i++)
+	//{
+	//	DistanceFromFood = GetPawn()->GetDistanceTo(DectectedFood[i]);
 
-		UE_LOG(LogTemp, Warning, TEXT("I see the food %f "), DistanceFromFood);
-	}
+	//	UE_LOG(LogTemp, Warning, TEXT("I see the food %f "), DistanceFromFood);
+	//}
 	//food is found 
 	IsTheFoodDetected = true;
 }
