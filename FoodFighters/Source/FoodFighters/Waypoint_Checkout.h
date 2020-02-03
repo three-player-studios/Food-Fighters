@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Waypoint_3.generated.h"
+#include "Waypoint_Checkout.generated.h"
 
 UCLASS()
-class FOODFIGHTERS_API AWaypoint_3 : public AActor
+class FOODFIGHTERS_API AWaypoint_Checkout : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AWaypoint_3();
+	AWaypoint_Checkout();
 
 protected:
 	// Called when the game starts or when spawned
