@@ -2,6 +2,8 @@
 
 #include "Waypoint.h"
 
+#include "NPCCharacter.h"
+
 // Sets default values
 AWaypoint::AWaypoint()
 {
@@ -41,19 +43,19 @@ void AWaypoint::Tick(float DeltaTime)
 void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 
- //   ANPCCharacter* Character = nullptr;
+   ANPCCharacter* Character = nullptr;
 
-	////neew
-	//full = true;
-	//if (OtherActor != nullptr)
-	//{
-	//
-	//	Character = Cast<ANPCCharacter>(OtherActor);
-	//	if (Character != nullptr)
-	//	{
-	//			Character->NextWaypoint = NextWaypoint;
-	//		
-	//	}
-	//}
+	//neew
+	full = true;
+	if (OtherActor != nullptr)
+	{
+	
+		Character = Cast<ANPCCharacter>(OtherActor);
+		if (Character != nullptr)
+		{
+				Character->NextWaypoint = NextWaypoint;
+			
+		}
+	}
 }
 

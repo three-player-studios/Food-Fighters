@@ -50,7 +50,7 @@ void ANPCCharacter::BeginPlay()
 void ANPCCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	CURwaittime -= DeltaTime * 4;
+	/*CURwaittime -= DeltaTime * 4;*/
 }
 
 // Called to bind functionality to input

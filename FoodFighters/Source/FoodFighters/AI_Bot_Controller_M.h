@@ -6,6 +6,19 @@
 #include "AIController.h"
 #include "Sound/SoundCue.h"
 #include "AI_Bot_M.h"
+#include "AI_Bot_M_Prey.h"
+#include "FoodFightersCharacter.h"
+#include "items.h"
+#include "Perception/AIPerceptionComponent.h"
+#include "Perception/AISenseConfig_Sight.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
+#include "Food.h"
+#include "NPCCharacter.h"
+#include "Waypoint.h"
+#include "Waypoint_Exit.h"
+#include "Waypoint_Checkout.h"
+#include "Waypoint_3.h"
+#include "Waypoint_2.h"
 #include "AI_Bot_Controller_M.generated.h"
 
 /**
@@ -83,6 +96,18 @@ public:
 		bool IsThePreyDetected = false;
 
 
+
+
+	// will dectecte if food is around or not 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		bool IsTheFoodDetected = false;
+
+
+	//// tells the distance of the player 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float DistanceFromFood = 0.0f;
+
+
 	// tells the distance of the player 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPlayer = 0.0f;
@@ -91,6 +116,19 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromPrey = 0.0f;
 
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint* chair_1;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_2* chair_2;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_3* chair_3;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_Checkout* checkout;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_Exit* exit;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")
 		USoundCue* EnemyAudioCueAttack;

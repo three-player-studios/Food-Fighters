@@ -65,17 +65,37 @@ void ANPC_AIController::Tick(float DeltaSecounds)
 	////// if thre Distance From the food is greater the AIEyeRadius then bot wiil see nothing 
 	if (DistanceFromFood > AIEyeRadius)
 	{
+		
 		IsTheFoodDetected = false;
 		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep waiting"));
 	}
 
 	//ai bot will move to the next waypoint if the these conditon are done 
-	if (NPCChar->NextWaypoint != nullptr && IsTheFoodDetected == false && NPCChar->CURwaittime > 0)
+	if (NPCChar->NextWaypoint != nullptr && IsTheFoodDetected == false )
 	{
-
+		
 		MoveToActor(NPCChar->NextWaypoint, 5.0f);
 		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+	
+	/*
+		if (chair_1->full) 
+		{
+		
+			MoveToActor(NPCChar->NextWaypoint_2, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
+		}
+	
+		if (chair_2->full)
+		{
+
+			MoveToActor(NPCChar->NextWaypoint_3, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
+		}*/
+
+	
 	}
+
+
 
 
 	if (NPCChar->CURwaittime < 0)
@@ -103,4 +123,8 @@ void ANPC_AIController::OnFoodDectected(TArray<AActor*> DectectedPlayer)
 	}
 	//player is found 
 	IsTheFoodDetected = true;
+}
+
+void ANPC_AIController::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
 }

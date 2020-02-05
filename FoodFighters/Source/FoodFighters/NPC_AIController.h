@@ -72,4 +72,23 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromFood = 0.0f;
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint* chair_1;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_2* chair_2;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_3* chair_3;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_Checkout* checkout;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_Exit* exit;
+
+
+	UFUNCTION()
+		void OnPlayerEnter(UPrimitiveComponent* OverlapComponent, AActor* OtherActor,
+			UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep,
+			const FHitResult &SweepResult);
+
 };

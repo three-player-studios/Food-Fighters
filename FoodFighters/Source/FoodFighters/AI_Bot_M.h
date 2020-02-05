@@ -5,6 +5,18 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Engine/World.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Components/SphereComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/BoxComponent.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
+#include "FoodFightersCharacter.h"
+#include "items.h"
+#include "AI_Bot_M_Prey.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
+#include "DrawDebugHelpers.h"
 #include "AI_Bot_M.generated.h"
 
 
@@ -20,6 +32,34 @@ public:
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint* NextWaypoint;
+
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_2* NextWaypoint_2;
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_3* NextWaypoint_3;
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_Checkout* NextWaypoint_Checkout;
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_Exit* NextWaypoint_Exit;
+
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool sit;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool sit2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool sit3;
 
 	// tells the max of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
@@ -102,5 +142,13 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void TakeDamageNormal();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float MAXwaittime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURwaittime;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float payment;
 
 };

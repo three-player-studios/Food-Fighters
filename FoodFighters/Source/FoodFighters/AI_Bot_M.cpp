@@ -1,21 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AI_Bot_M.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "Runtime/Engine/Classes/Engine/Engine.h"
-#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "Components/SphereComponent.h"
-#include "Components/CapsuleComponent.h"
-#include "Components/BoxComponent.h"
-#include "Runtime/Engine/Classes/Engine/Engine.h"
-#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "FoodFightersCharacter.h"
-#include "items.h"
-#include "AI_Bot_M_Prey.h"
-#include "Runtime/Engine/Classes/Engine/World.h"
-#include "DrawDebugHelpers.h"
+
 
 // Sets default values
 AAI_Bot_M::AAI_Bot_M()
@@ -46,10 +32,40 @@ AAI_Bot_M::AAI_Bot_M()
 	EnemyMaxHealth = 30;
 	EnemyHealthCurrent = EnemyMaxHealth;
 
+	MAXwaittime = 100;
+	CURwaittime = MAXwaittime;
+	sit = false;
+	sit2 = false;
+	sit3 = false;
+
 }
 
 void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
+	if (NextWaypoint) 
+	{
+	
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+
+			sit = true;
+	}
+	
+
+	if (NextWaypoint_2)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+
+		sit2 = true;
+	}
+
+	if (NextWaypoint_3)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
+
+		sit3 = true;
+	}
 
 	if (&AFoodFightersCharacter::ActorToWorld)
 	{
@@ -133,7 +149,7 @@ void AAI_Bot_M::Tick(float DeltaTime)
 
 	//EnemyHealthCurrent -= DeltaTime*4;
 	//UE_LOG(LogTemp, Warning, TEXT(" my health is %f "), EnemyHealthCurrent);
-
+		/*CURwaittime -= DeltaTime * 4;*/
 	////EDeath();
 
 }
