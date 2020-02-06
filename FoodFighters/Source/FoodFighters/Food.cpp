@@ -16,12 +16,9 @@ AFood::AFood()
 
 	SphereRadius = 100.0f;
 
-	PointsItem = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
-	PointsItem->InitSphereRadius(SphereRadius);
-	RootComponent = PointsItem;
-
-	MyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("My Mesh"));
-	MyMesh->SetupAttachment(RootComponent);
+	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
+	CollisionSphere->InitSphereRadius(SphereRadius);
+	RootComponent = CollisionSphere;
 }
 
 // Called when the game starts or when spawned

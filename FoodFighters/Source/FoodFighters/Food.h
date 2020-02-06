@@ -22,7 +22,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 	
 	// name of the object
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
@@ -31,17 +30,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		UTexture2D* Image;
 
-	UPROPERTY(EditAnywhere)
-		float PonitsystemCount;
-
 	// collision component
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
-		class USphereComponent* PointsItem;
-
-	// make mesh component
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class UStaticMeshComponent* MyMesh;
+		class USphereComponent* CollisionSphere;
 
 	UPROPERTY(EditAnywhere)
-		float SphereRadius;	
+		float SphereRadius;
 };
