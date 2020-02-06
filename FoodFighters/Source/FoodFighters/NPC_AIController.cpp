@@ -1,17 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "NPC_AIController.h"
-#include "Perception/AIPerceptionComponent.h"
-#include "Perception/AISenseConfig_Sight.h"
-#include "Waypoint.h"
-#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
-#include "Food.h"
-#include "NPCCharacter.h"
 
 ANPC_AIController::ANPC_AIController()
 {
-	PrimaryActorTick.bCanEverTick = true;
-
 
 
 	//Creates a component that configres ai bot sight 
@@ -43,11 +35,11 @@ ANPC_AIController::ANPC_AIController()
 
 	// updates perception if the player is dected 
 	GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &ANPC_AIController::OnFoodDectected);
-															
+
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
-}
 
+}
 void ANPC_AIController::BeginPlay()
 {
 	//comfirms if PerceptionComponent is working 
@@ -64,9 +56,6 @@ void ANPC_AIController::BeginPlay()
 
 void ANPC_AIController::Possess(APawn * Pawn)
 {
-
-
-
 }
 
 void ANPC_AIController::Tick(float DeltaSecounds)
@@ -76,22 +65,44 @@ void ANPC_AIController::Tick(float DeltaSecounds)
 	////// if thre Distance From the food is greater the AIEyeRadius then bot wiil see nothing 
 	if (DistanceFromFood > AIEyeRadius)
 	{
+		
 		IsTheFoodDetected = false;
 		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep waiting"));
 	}
 
 	//ai bot will move to the next waypoint if the these conditon are done 
-	if (NPCChar->NextWaypoint != nullptr && IsTheFoodDetected == false && NPCChar->CURwaittime > 0)
+	if (NPCChar->NextWaypoint != nullptr && IsTheFoodDetected == false )
 	{
+		
 		MoveToActor(NPCChar->NextWaypoint, 5.0f);
 		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+	
+	/*
+		if (chair_1->full) 
+		{
+		
+			MoveToActor(NPCChar->NextWaypoint_2, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
+		}
+	
+		if (chair_2->full)
+		{
+
+			MoveToActor(NPCChar->NextWaypoint_3, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
+		}*/
+
+	
 	}
 
 
-	if (NPCChar->CURwaittime < 0) 
+
+
+	if (NPCChar->CURwaittime < 0)
 	{
-	
-		MoveToActor(NPCChar->NextWaypoint, 5.0f);
+
+		MoveToActor(NPCChar->NextWaypoint_Exit, 5.0f);
+		Destroy();
 
 	}
 }
@@ -103,13 +114,17 @@ FRotator ANPC_AIController::GetControlRotation() const
 
 void ANPC_AIController::OnFoodDectected(TArray<AActor*> DectectedPlayer)
 {
-//	//gets distance between ai bot and player 
-//	for (size_t i = 0; i < DectectedFood.Num(); i++)
-//	{
-//		DistanceFromFood = GetPawn()->GetDistanceTo(DectectedFood[i]);
-//
-//		UE_LOG(LogTemp, Warning, TEXT("I see the food %f "), DistanceFromFood);
-//	}
-//	//food is found 
-//	IsTheFoodDetected = true;
+	//gets distance between ai bot and player 
+	for (size_t i = 0; i < DectectedPlayer.Num(); i++)
+	{
+		DistanceFromFood = GetPawn()->GetDistanceTo(DectectedPlayer[i]);
+
+		UE_LOG(LogTemp, Warning, TEXT("I see the player %f "), DistanceFromFood);
+	}
+	//player is found 
+	IsTheFoodDetected = true;
+}
+
+void ANPC_AIController::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
 }

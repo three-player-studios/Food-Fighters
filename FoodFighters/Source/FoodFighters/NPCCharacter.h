@@ -6,6 +6,13 @@
 #include "GameFramework/Character.h"
 #include "Engine/World.h"
 #include"Engine.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
+#include "Components/SphereComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/BoxComponent.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
 #include "NPCCharacter.generated.h"
 
 UCLASS()
@@ -21,13 +28,36 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint* NextWaypoint;
 
-	////// declare overlap begin function
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_2* NextWaypoint_2;
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_3* NextWaypoint_3;
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_Checkout* NextWaypoint_Checkout;
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class AWaypoint_Exit* NextWaypoint_Exit;
+
+	//// Player hit box
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
+		class USphereComponent* triggerC;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
+		class UBoxComponent* Head;
+
+
+	//// declare overlap begin function
+	UFUNCTION()
+		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UFUNCTION()
-		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
-	//UFUNCTION()
-	//	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 
 protected:
@@ -47,8 +77,7 @@ public:
 		float CURwaittime;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
-		float level;
-
+		float payment;
 
 	
 };

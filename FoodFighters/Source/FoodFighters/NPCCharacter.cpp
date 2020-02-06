@@ -1,30 +1,41 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "NPCCharacter.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "Runtime/Engine/Classes/Engine/Engine.h"
-#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "Components/SphereComponent.h"
-#include "Components/CapsuleComponent.h"
-#include "Components/BoxComponent.h"
-#include "Runtime/Engine/Classes/Engine/Engine.h"
-#include "Runtime/Core/Public/Math/UnrealMathUtility.h"
-#include "items.h"
-#include "Runtime/Engine/Classes/Engine/World.h"
-#include "DrawDebugHelpers.h"
 
 // Sets default values
 ANPCCharacter::ANPCCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 600.0f, 0.0f);
+
+	triggerC = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
+	triggerC->InitSphereRadius(96.0f);
+	triggerC->SetCollisionProfileName(TEXT("trigger"));
+	triggerC->SetupAttachment(RootComponent);
+
+	triggerC->OnComponentBeginOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapBegin);
+	triggerC->OnComponentEndOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapEnd);
+
+
+	Head = CreateDefaultSubobject<UBoxComponent>(TEXT("headComponent"));
+	Head->OnComponentBeginOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapBegin);
+	Head->OnComponentEndOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapEnd);
+	Head->SetCollisionProfileName(TEXT("headtrigger"));
+	Head->SetupAttachment(RootComponent);
+
 	MAXwaittime = 100;
 	CURwaittime = MAXwaittime;
 }
 
 void ANPCCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+}
+
+void ANPCCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
 }
 
@@ -39,7 +50,7 @@ void ANPCCharacter::BeginPlay()
 void ANPCCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	/*CURwaittime -= DeltaTime * 4;*/
 }
 
 // Called to bind functionality to input

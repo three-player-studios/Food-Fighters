@@ -4,7 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Perception/AIPerceptionComponent.h"
+#include "Perception/AISenseConfig_Sight.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
+#include "Food.h"
 #include "NPCCharacter.h"
+#include "Waypoint.h"
+#include "Waypoint_Exit.h"
+#include "Waypoint_Checkout.h"
+#include "Waypoint_3.h"
+#include "Waypoint_2.h"
 #include "NPC_AIController.generated.h"
 
 /**
@@ -14,10 +23,11 @@ UCLASS()
 class FOODFIGHTERS_API ANPC_AIController : public AAIController
 {
 	GENERATED_BODY()
+	
 public:
 
-		ANPC_AIController();
-	
+	ANPC_AIController();
+
 	virtual void BeginPlay() override;
 
 	//runs when ai controller is in the character
@@ -58,12 +68,27 @@ public:
 		bool IsTheFoodDetected = false;
 
 
-
-	// tells the distance of the player 
+	//// tells the distance of the player 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromFood = 0.0f;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint* chair_1;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_2* chair_2;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_3* chair_3;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_Checkout* checkout;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AWaypoint_Exit* exit;
 
 
-
+	UFUNCTION()
+		void OnPlayerEnter(UPrimitiveComponent* OverlapComponent, AActor* OtherActor,
+			UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep,
+			const FHitResult &SweepResult);
 
 };

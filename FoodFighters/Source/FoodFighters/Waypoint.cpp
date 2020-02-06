@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Waypoint.h"
-#include "AI_Bot_M.h"
+
+#include "NPCCharacter.h"
 
 // Sets default values
 AWaypoint::AWaypoint()
@@ -41,14 +42,15 @@ void AWaypoint::Tick(float DeltaTime)
 // if ai bot enters the box componet of waypoint  the ai bot will go to the next way point  
 void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	AAI_Bot_M* Character = nullptr;
+
+   ANPCCharacter* Character = nullptr;
 
 	//neew
 	full = true;
 	if (OtherActor != nullptr)
 	{
 	
-		Character = Cast<AAI_Bot_M>(OtherActor);
+		Character = Cast<ANPCCharacter>(OtherActor);
 		if (Character != nullptr)
 		{
 				Character->NextWaypoint = NextWaypoint;
