@@ -13,6 +13,7 @@ class AFoodFightersGameMode : public AGameModeBase
 
 public:
 	AFoodFightersGameMode();
+
 };
 
 
