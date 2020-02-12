@@ -19,9 +19,6 @@ ATable::ATable()
 	MyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("My Mesh"));
 	MyMesh->SetupAttachment(RootComponent);
 
-	foodplace =false;
-	foodplace2 = false;
-	foodplace3 = false;
 
 }
 

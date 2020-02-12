@@ -55,18 +55,6 @@ public:
 
 
 
-
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool foodplace;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool foodplace2;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool foodplace3;
-
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AFood* fooditem;
 
