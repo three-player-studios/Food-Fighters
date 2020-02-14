@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "Engine/World.h"
 #include "Engine.h"
+#include "Table.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "Components/SphereComponent.h"
@@ -71,8 +72,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool foodplace2;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool foodplace3;
 
 	UFUNCTION()
 		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
