@@ -130,6 +130,11 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		AWaypoint_Exit* exit;
 
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AFood* foodboxplace;
+
+
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")
 		USoundCue* EnemyAudioCueAttack;
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")
