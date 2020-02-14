@@ -2,7 +2,7 @@
 
 #include "Waypoint.h"
 
-#include "NPCCharacter.h"
+#include "AI_Bot_M.h"
 
 // Sets default values
 AWaypoint::AWaypoint()
@@ -43,14 +43,14 @@ void AWaypoint::Tick(float DeltaTime)
 void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 
-   ANPCCharacter* Character = nullptr;
+   AAI_Bot_M* Character = nullptr;
 
 	//neew
 	full = true;
 	if (OtherActor != nullptr)
 	{
 	
-		Character = Cast<ANPCCharacter>(OtherActor);
+		Character = Cast<AAI_Bot_M>(OtherActor);
 		if (Character != nullptr)
 		{
 				Character->NextWaypoint = NextWaypoint;

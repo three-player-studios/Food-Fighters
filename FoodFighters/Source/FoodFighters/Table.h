@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Food.h"
-#include "AI_Bot_Controller_M.h"
-#include "AI_Bot_M.h"
+//#include "Food.h"
+//#include "AI_Bot_Controller_M.h"
+//#include "AI_Bot_M.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "GameFramework/CharacterMovementComponent.h"

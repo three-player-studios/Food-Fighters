@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "NPCCharacter.h"
+#include "AI_Bot_M.h"
 #include"Components/BoxComponent.h"
 #include "Waypoint_Exit.generated.h"
 
