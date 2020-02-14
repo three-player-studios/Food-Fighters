@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "NPCCharacter.h"
 #include"Components/BoxComponent.h"
 #include "Waypoint_2.generated.h"
 

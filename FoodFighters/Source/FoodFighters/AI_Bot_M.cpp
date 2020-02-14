@@ -67,11 +67,11 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 		sit3 = true;
 	}
 
-	if (&AFoodFightersCharacter::ActorToWorld)
-	{
-		/*GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));*/
+	//if (&AFoodFightersCharacter::ActorToWorld)
+	//{
+	//	/*GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));*/
 
-	}
+	//}
 	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		if (GEngine)

@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include"Components/BoxComponent.h"
-#include "NPCCharacter.h"
+#include "AI_Bot_M.h"
 #include "Waypoint_3.generated.h"
 
 UCLASS()
