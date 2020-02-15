@@ -4,8 +4,6 @@
 
 ANPC_AIController::ANPC_AIController()
 {
-
-
 	//Creates a component that configres ai bot sight 
 	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SightConfig"));
 
@@ -34,14 +32,19 @@ ANPC_AIController::ANPC_AIController()
 	GetPerceptionComponent()->SetDominantSense(*SightConfig->GetSenseImplementation());
 
 	// updates perception if the player is dected 
-	GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &ANPC_AIController::OnFoodDectected);
-
+	GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &ANPC_AIController::OnPlayerDectected);
 	//the  Perception Component attaches to the ConfigureSense which is a pointer to my SightConfig
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
 
 }
+
 void ANPC_AIController::BeginPlay()
 {
+}
+
+void ANPC_AIController::Possess(APawn * Pawn)
+{
+
 	//comfirms if PerceptionComponent is working 
 	if (GetPerceptionComponent() != nullptr)
 	{
@@ -54,77 +57,114 @@ void ANPC_AIController::BeginPlay()
 	}
 }
 
-void ANPC_AIController::Possess(APawn * Pawn)
-{
-}
-
 void ANPC_AIController::Tick(float DeltaSecounds)
 {
-	ANPCCharacter* NPCChar = Cast<	ANPCCharacter>(GetPawn());
+	//Makes a pointers of my ai bot and make into a pawn  
+	ANPCCharacter* Character = Cast<ANPCCharacter>(GetPawn());
+	AAI_Bot_M* NCharacter = Cast<AAI_Bot_M>(GetPawn());
 
-	////// if thre Distance From the food is greater the AIEyeRadius then bot wiil see nothing 
-	if (DistanceFromFood > AIEyeRadius)
+
+	////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	if (DistanceFromPlayer > AIEyeRadius)
 	{
-		
-		IsTheFoodDetected = false;
-		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep waiting"));
+		IsThePlayerDetected = false;
+		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
 	}
+
 
 	//ai bot will move to the next waypoint if the these conditon are done 
-	if (NPCChar->NextWaypoint != nullptr && IsTheFoodDetected == false )
+	if (Character->NextWaypoint != nullptr)
 	{
-		
-		MoveToActor(NPCChar->NextWaypoint, 5.0f);
+
+		MoveToActor(Character->NextWaypoint, 5.0f);
 		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
-	
-	/*
-		if (chair_1->full) 
-		{
-		
-			MoveToActor(NPCChar->NextWaypoint_2, 5.0f);
-			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
-		}
-	
-		if (chair_2->full)
-		{
 
-			MoveToActor(NPCChar->NextWaypoint_3, 5.0f);
-			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
-		}*/
 
-	
 	}
 
 
+	if (Character->sit == true)
+	{
+		//ai bot will move to the next waypoint if the these conditon are done 
+		if (Character->NextWaypoint_2 != nullptr)
+		{
+
+			MoveToActor(Character->NextWaypoint_2, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
 
 
-	if (NPCChar->CURwaittime < 0)
+		}
+	}
+
+
+	if (Character->sit2 == true)
+	{
+		//ai bot will move to the next waypoint if the these conditon are done 
+		if (Character->NextWaypoint_3 != nullptr)
+		{
+
+			MoveToActor(Character->NextWaypoint_3, 5.0f);
+			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
+
+
+		}
+	}
+
+
+	if (Character->CURwaittime < 0)
 	{
 
-		MoveToActor(NPCChar->NextWaypoint_Exit, 5.0f);
+		MoveToActor(Character->NextWaypoint_Exit, 5.0f);
 		Destroy();
 
 	}
+	
 }
 
 FRotator ANPC_AIController::GetControlRotation() const
 {
-	return FRotator();
-}
-
-void ANPC_AIController::OnFoodDectected(TArray<AActor*> DectectedPlayer)
-{
-	//gets distance between ai bot and player 
-	for (size_t i = 0; i < DectectedPlayer.Num(); i++)
+	if (GetPawn() == nullptr)
 	{
-		DistanceFromFood = GetPawn()->GetDistanceTo(DectectedPlayer[i]);
-
-		UE_LOG(LogTemp, Warning, TEXT("I see the player %f "), DistanceFromFood);
+		return FRotator(0.0f, 0.0f, 0.0f);
 	}
-	//player is found 
-	IsTheFoodDetected = true;
+	return FRotator(0.0f, GetPawn()->GetActorRotation().Yaw, 0.0f);
+
 }
 
-void ANPC_AIController::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+void ANPC_AIController::AttckSound()
+{
+}
+
+void ANPC_AIController::WalkSound()
+{
+}
+
+void ANPC_AIController::DeathSound()
+{
+}
+
+bool ANPC_AIController::Damage()
+{
+	return false;
+}
+
+bool ANPC_AIController::Attack()
+{
+	return false;
+}
+
+void ANPC_AIController::OnPlayerDectected(TArray<AActor*> DectectedPlayer)
+{
+}
+
+void ANPC_AIController::OnPreyDectected(TArray<AActor*> DectectedPrey)
+{
+}
+
+void ANPC_AIController::OnPlayerFound()
+{
+}
+
+void ANPC_AIController::OnPreyFound()
 {
 }

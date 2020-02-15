@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Sound/SoundCue.h"
+//#include "FoodFightersCharacter.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
@@ -39,9 +41,28 @@ public:
 	// will alow ai Possess componeent to always point in the direction the character is facing in 
 	virtual FRotator GetControlRotation() const override;
 
+
+
+	void AttckSound();
+	void WalkSound();
+	void DeathSound();
+	bool Damage();
+	bool Attack();
+
+
 	// will dectecte if player is around 
 	UFUNCTION()
-		void OnFoodDectected(TArray<AActor*> DectectedPlayer);
+		void OnPlayerDectected(TArray<AActor*> DectectedPlayer);
+
+	UFUNCTION()
+		void OnPreyDectected(TArray<AActor*> DectectedPrey);
+
+	UFUNCTION()
+		void OnPlayerFound();
+
+	UFUNCTION()
+		void OnPreyFound();
+
 
 	// the radius of sight the ai bot can see 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
@@ -63,6 +84,17 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		class UAISenseConfig_Sight* SightConfig;
 
+	// will dectecte if player is around or not 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		bool IsThePlayerDetected = false;
+
+	// will dectecte if player is around or not 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		bool IsThePreyDetected = false;
+
+
+
+
 	// will dectecte if food is around or not 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		bool IsTheFoodDetected = false;
@@ -71,7 +103,17 @@ public:
 	//// tells the distance of the player 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceFromFood = 0.0f;
-	
+
+
+	// tells the distance of the player 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float DistanceFromPlayer = 0.0f;
+
+	// tells the distance of the prey 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float DistanceFromPrey = 0.0f;
+
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		AWaypoint* chair_1;
 
@@ -86,9 +128,19 @@ public:
 		AWaypoint_Exit* exit;
 
 
-	UFUNCTION()
-		void OnPlayerEnter(UPrimitiveComponent* OverlapComponent, AActor* OtherActor,
-			UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep,
-			const FHitResult &SweepResult);
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		AFood* foodboxplace;
+
+
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		USoundCue* EnemyAudioCueAttack;
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		UAudioComponent* AudioComponent;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		USoundCue* EnemyAudioCueWalk;
+	UPROPERTY(BlueprintReadOnly, Category = "Audio")
+		UAudioComponent* AudioComponent2;
+
 
 };

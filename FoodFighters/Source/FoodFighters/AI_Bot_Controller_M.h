@@ -8,7 +8,6 @@
 #include "AI_Bot_M.h"
 #include "AI_Bot_M_Prey.h"
 #include "FoodFightersCharacter.h"
-#include "items.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 

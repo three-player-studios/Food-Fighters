@@ -66,74 +66,15 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 
 		sit3 = true;
 	}
-
-	//if (&AFoodFightersCharacter::ActorToWorld)
-	//{
-	//	/*GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));*/
-
-	//}
-	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
-	{
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit overlap begin"));
-		}
-
-
-<<<<<<< HEAD
-
-=======
-		if (&AFoodFightersCharacter::ActorToWorld)
-		{
-		//	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
-
-		}
->>>>>>> 4ac1e533fa6ebc84c67606fd3f87bc521ae64f6f
-
-
-		if (&Aitems::ActorToWorld)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  item overlap begin"));
-
-		}
-
-		if (&AAI_Bot_M_Prey::ActorToWorld)
-		{
-			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by prey monster  overlap begin"));
-
-		}
-
-	}*/
 }
 
 void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
-	/*if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
-	{
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is not hit overlap end"));
-		}
-	}*/
 }
 
 void AAI_Bot_M::EDeath()
 {
-	if (EnemyHealthCurrent <= 0)
-	{
-		//ERespawn();
-		//Destroy();
-
-	}
 }
-
-void AAI_Bot_M::ERespawn()
-{
-
-}
-
-
-
 
 // Called when the game starts or when spawned
 void AAI_Bot_M::BeginPlay()
@@ -147,11 +88,6 @@ void AAI_Bot_M::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//EnemyHealthCurrent -= DeltaTime*4;
-	//UE_LOG(LogTemp, Warning, TEXT(" my health is %f "), EnemyHealthCurrent);
-		/*CURwaittime -= DeltaTime * 4;*/
-	////EDeath();
-
 }
 
 // Called to bind functionality to input
@@ -159,10 +95,5 @@ void AAI_Bot_M::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
-
-void AAI_Bot_M::TakeDamageNormal() {
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by weapon overlap begin"));
-	EnemyHealthCurrent--;
 }
 
