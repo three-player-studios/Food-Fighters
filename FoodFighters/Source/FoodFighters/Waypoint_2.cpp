@@ -2,7 +2,6 @@
 
 #include "Waypoint_2.h"
 #include "AI_Bot_M.h"
-
 // Sets default values
 AWaypoint_2::AWaypoint_2()
 {
@@ -54,6 +53,8 @@ void AWaypoint_2::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor *
 			Character->NextWaypoint_2 = NextWaypoint_2;
 
 		}
+
+
 	}
 }
 

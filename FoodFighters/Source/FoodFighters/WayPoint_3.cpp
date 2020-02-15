@@ -2,7 +2,6 @@
 
 #include "Waypoint_3.h"
 
-
 // Sets default values
 AWaypoint_3::AWaypoint_3()
 {
@@ -55,6 +54,8 @@ void AWaypoint_3::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor *
 			Character->NextWaypoint_3 = NextWaypoint_3;
 
 		}
+
+
 	}
 
 

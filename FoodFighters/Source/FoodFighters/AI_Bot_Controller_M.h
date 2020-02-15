@@ -6,8 +6,9 @@
 #include "AIController.h"
 #include "Sound/SoundCue.h"
 #include "AI_Bot_M.h"
-#include "AI_Bot_M_Prey.h"
+#include "NPCCharacter.h"
 #include "FoodFightersCharacter.h"
+#include "items.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
@@ -21,7 +22,7 @@
 #include "AI_Bot_Controller_M.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class FOODFIGHTERS_API AAI_Bot_Controller_M : public AAIController
@@ -129,11 +130,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		AWaypoint_Exit* exit;
 
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AFood* foodboxplace;
-
-
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")
 		USoundCue* EnemyAudioCueAttack;
 	UPROPERTY(BlueprintReadOnly, Category = "Audio")
@@ -145,5 +141,5 @@ public:
 		UAudioComponent* AudioComponent2;
 
 
-	
+
 };

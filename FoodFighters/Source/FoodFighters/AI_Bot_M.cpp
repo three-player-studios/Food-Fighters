@@ -70,6 +70,13 @@ void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * Ot
 
 void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
+	sit = false;
+
+	sit2 = false;
+
+
+	sit3 = false;
+
 }
 
 void AAI_Bot_M::EDeath()

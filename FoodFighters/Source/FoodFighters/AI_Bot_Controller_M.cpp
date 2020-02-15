@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "AI_Bot_Controller_M.h"
 
 
@@ -71,12 +69,23 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 {
 	Super::Tick(DeltaSecounds);
 
+	/*OnPlayerFound();*/
+	//OnPreyFound();
+
 	//Makes a pointers of my ai bot and make into a pawn  
-	ANPCCharacter* Character = Cast<ANPCCharacter>(GetPawn());
-	AAI_Bot_M* NCharacter = Cast<AAI_Bot_M>(GetPawn());
+	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
+	
+
+	////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	if (DistanceFromPlayer > AIEyeRadius)
+	{
+		IsThePlayerDetected = false;
+		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	}
+
 
 	//ai bot will move to the next waypoint if the these conditon are done 
-	if (Character->NextWaypoint != nullptr)
+	if (Character->NextWaypoint != nullptr && IsTheFoodDetected == false)
 	{
 
 		MoveToActor(Character->NextWaypoint, 5.0f);
@@ -86,10 +95,10 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	}
 
 
-	if (Character->sit ==true)
+	if (Character->sit == true)
 	{
 		//ai bot will move to the next waypoint if the these conditon are done 
-		if (Character->NextWaypoint_2 != nullptr )
+		if (Character->NextWaypoint_2 != nullptr && IsTheFoodDetected == false)
 		{
 
 			MoveToActor(Character->NextWaypoint_2, 5.0f);
@@ -98,12 +107,12 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 
 		}
 	}
-	
+
 
 	if (Character->sit2 == true)
 	{
 		//ai bot will move to the next waypoint if the these conditon are done 
-		if (Character->NextWaypoint_3 != nullptr )
+		if (Character->NextWaypoint_3 != nullptr && IsTheFoodDetected == false)
 		{
 
 			MoveToActor(Character->NextWaypoint_3, 5.0f);
@@ -112,7 +121,7 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 
 		}
 	}
-	
+
 
 	if (Character->CURwaittime < 0)
 	{
@@ -121,6 +130,7 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 		Destroy();
 
 	}
+
 
 }
 
@@ -144,16 +154,18 @@ void AAI_Bot_Controller_M::OnPlayerDectected(TArray<AActor*> DectectedPlayer)
 
 void AAI_Bot_Controller_M::OnPreyDectected(TArray<AActor*> DectectedPrey)
 {
+
 }
 
 void AAI_Bot_Controller_M::OnPlayerFound()
 {
 
+
 }
 
 void AAI_Bot_Controller_M::OnPreyFound()
 {
-
+	
 }
 
 
