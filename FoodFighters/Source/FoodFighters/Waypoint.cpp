@@ -44,9 +44,8 @@ void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * O
 {
 
    AAI_Bot_M* Character = nullptr;
-
 	//neew
-	full = true;
+	
 	if (OtherActor != nullptr)
 	{
 	
@@ -54,8 +53,11 @@ void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * O
 		if (Character != nullptr)
 		{
 				Character->NextWaypoint = NextWaypoint;
-			
+				full = true;
 		}
+
+
+		
 	}
 }
 

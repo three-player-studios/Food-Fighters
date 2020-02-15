@@ -13,10 +13,45 @@ ANPCCharacter::ANPCCharacter()
 
 void ANPCCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
+	if (NextWaypoint)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" sit"));
+
+		sit = true;
+	}
+
+
+	if (NextWaypoint_2)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" sit2"));
+
+		sit2 = true;
+	}
+
+	if (NextWaypoint_3)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" sit3"));
+
+		sit3 = true;
+	}
 }
 
 void ANPCCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
+
+
+
+		sit = false;
+
+		sit2 = false;
+
+
+		sit3 = false;
+	
+
 }
 
 void ANPCCharacter::EDeath()

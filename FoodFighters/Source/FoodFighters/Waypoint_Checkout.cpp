@@ -43,7 +43,7 @@ void AWaypoint_Checkout::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, A
 	AAI_Bot_M* Character = nullptr;
 
 	//neew
-	full = true;
+
 	if (OtherActor != nullptr)
 	{
 
@@ -51,7 +51,7 @@ void AWaypoint_Checkout::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, A
 		if (Character != nullptr)
 		{
 			Character->NextWaypoint_Checkout = NextWaypoint_Checkout;
-
+			/*full = true;*/
 		}
 	}
 }

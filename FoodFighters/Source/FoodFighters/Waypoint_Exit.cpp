@@ -2,7 +2,6 @@
 
 #include "Waypoint_Exit.h"
 
-
 // Sets default values
 AWaypoint_Exit::AWaypoint_Exit()
 {
