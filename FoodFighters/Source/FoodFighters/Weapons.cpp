@@ -93,7 +93,7 @@ void AWeapons::Attack()
 		BaseDanamge = Player->CURSTR + Player->CURLUCK - Eactor->CURDEF - Eactor->Baselevel;
 		 
 
-		Eactor->TakeDamageNormal();
+//		Eactor->TakeDamageNormal();
 
 		if (Player->CRITCHANCE == FMath::FRandRange(10, 100))
 		{

@@ -28,6 +28,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint* NextWaypoint;
 
+
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint_2* NextWaypoint_2;
@@ -44,6 +45,65 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint_Exit* NextWaypoint_Exit;
 
+
+	//defines refence of the waypoint 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool sit;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool sit2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool sit3;
+
+	// tells the max of the enemy 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float EnemyMaxHealth;
+
+	// tells the current health of the enemy 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+		float EnemyHealthCurrent;
+
+
+	//playername
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		FString EnemyName;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float Baselevel;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseSTR;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseDEF;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseSPD;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseVIT;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseDEX;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseLUCK;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float BaseEXP;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float randlevl;
+
+
+	//Currnet stat
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURSTR;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURDEF;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURSPD;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURVIT;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURDEX;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
+		float CURLUCK;
+
+
 	//// Player hit box
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Itemtrigger)
 		class USphereComponent* triggerC;
@@ -59,17 +119,24 @@ public:
 	UFUNCTION()
 		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	UFUNCTION()
+		void EDeath();
+
+	UFUNCTION()
+		void ERespawn();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	void TakeDamageNormal();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)
 		float MAXwaittime;
