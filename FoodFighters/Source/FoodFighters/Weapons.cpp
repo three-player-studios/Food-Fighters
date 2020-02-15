@@ -10,7 +10,6 @@
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
 #include "DrawDebugHelpers.h"
 #include "AI_Bot_M.h"
-#include "AI_Bot_M_Prey.h"
 #include "FoodFightersCharacter.h"
 
 // Sets default values
@@ -93,7 +92,7 @@ void AWeapons::Attack()
 		BaseDanamge = Player->CURSTR + Player->CURLUCK - Eactor->CURDEF - Eactor->Baselevel;
 		 
 
-		Eactor->TakeDamageNormal();
+//		Eactor->TakeDamageNormal();
 
 		if (Player->CRITCHANCE == FMath::FRandRange(10, 100))
 		{

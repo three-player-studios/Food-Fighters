@@ -6,7 +6,7 @@
 #include "AIController.h"
 #include "Sound/SoundCue.h"
 #include "AI_Bot_M.h"
-#include "AI_Bot_M_Prey.h"
+#include "NPCCharacter.h"
 #include "FoodFightersCharacter.h"
 #include "items.h"
 #include "Perception/AIPerceptionComponent.h"
@@ -22,7 +22,7 @@
 #include "AI_Bot_Controller_M.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class FOODFIGHTERS_API AAI_Bot_Controller_M : public AAIController
@@ -141,5 +141,5 @@ public:
 		UAudioComponent* AudioComponent2;
 
 
-	
+
 };

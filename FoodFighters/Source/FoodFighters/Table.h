@@ -4,9 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-//#include "Food.h"
-//#include "AI_Bot_Controller_M.h"
-//#include "AI_Bot_M.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -14,7 +11,6 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/BoxComponent.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
-#include "FoodFightersCharacter.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
 #include "DrawDebugHelpers.h"
 #include "Table.generated.h"

@@ -9,33 +9,56 @@ ANPCCharacter::ANPCCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-	GetCharacterMovement()->bOrientRotationToMovement = true;
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 600.0f, 0.0f);
-
-	triggerC = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
-	triggerC->InitSphereRadius(96.0f);
-	triggerC->SetCollisionProfileName(TEXT("trigger"));
-	triggerC->SetupAttachment(RootComponent);
-
-	triggerC->OnComponentBeginOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapBegin);
-	triggerC->OnComponentEndOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapEnd);
-
-
-	Head = CreateDefaultSubobject<UBoxComponent>(TEXT("headComponent"));
-	Head->OnComponentBeginOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapBegin);
-	Head->OnComponentEndOverlap.AddDynamic(this, &ANPCCharacter::OnOverlapEnd);
-	Head->SetCollisionProfileName(TEXT("headtrigger"));
-	Head->SetupAttachment(RootComponent);
-
-	MAXwaittime = 100;
-	CURwaittime = MAXwaittime;
 }
 
 void ANPCCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
+	if (NextWaypoint)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" sit"));
+
+		sit = true;
+	}
+
+
+	if (NextWaypoint_2)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" sit2"));
+
+		sit2 = true;
+	}
+
+	if (NextWaypoint_3)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" sit3"));
+
+		sit3 = true;
+	}
 }
 
 void ANPCCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
+{
+
+
+
+		sit = false;
+
+		sit2 = false;
+
+
+		sit3 = false;
+	
+
+}
+
+void ANPCCharacter::EDeath()
+{
+}
+
+void ANPCCharacter::ERespawn()
 {
 }
 
@@ -58,5 +81,9 @@ void ANPCCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ANPCCharacter::TakeDamageNormal()
+{
 }
 
