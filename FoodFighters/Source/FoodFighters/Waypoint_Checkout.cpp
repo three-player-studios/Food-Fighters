@@ -2,7 +2,7 @@
 
 #include "Waypoint_Checkout.h"
 #include "AI_Bot_M.h"
-
+#include"NPCCharacter.h"
 // Sets default values
 AWaypoint_Checkout::AWaypoint_Checkout()
 {
@@ -41,7 +41,7 @@ void AWaypoint_Checkout::Tick(float DeltaTime)
 void AWaypoint_Checkout::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	AAI_Bot_M* Character = nullptr;
-
+	ANPCCharacter* NCharacter = nullptr;
 	//neew
 
 	if (OtherActor != nullptr)
@@ -52,6 +52,15 @@ void AWaypoint_Checkout::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, A
 		{
 			Character->NextWaypoint_Checkout = NextWaypoint_Checkout;
 			/*full = true;*/
+		}
+
+
+		NCharacter = Cast<ANPCCharacter>(OtherActor);
+
+		if (NCharacter != nullptr)
+		{
+			NCharacter->NextWaypoint_Checkout = NextWaypoint_Checkout;
+			full = true;
 		}
 	}
 }

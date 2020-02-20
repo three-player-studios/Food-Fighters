@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Waypoint_Exit.h"
-
+#include"NPCCharacter.h"
 // Sets default values
 AWaypoint_Exit::AWaypoint_Exit()
 {
@@ -41,17 +41,23 @@ void AWaypoint_Exit::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActo
 {
 
 	AAI_Bot_M* Character = nullptr;
-
+	ANPCCharacter* NCharacter = nullptr;
 	//neew
-	full = true;
+
 	if (OtherActor != nullptr)
 	{
 
 		Character = Cast<AAI_Bot_M>(OtherActor);
 		if (Character != nullptr)
-		{
+		{	full = true;
 			Character->NextWaypoint_Exit = NextWaypoint_Exit;
 
+		}
+
+		if (NCharacter != nullptr)
+		{
+			NCharacter->NextWaypoint_Exit = NextWaypoint_Exit;
+			full = true;
 		}
 	}
 }

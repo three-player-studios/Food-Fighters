@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Waypoint.h"
-
+#include"NPCCharacter.h"
 #include "AI_Bot_M.h"
 
 // Sets default values
@@ -44,19 +44,26 @@ void AWaypoint::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor * O
 {
 
    AAI_Bot_M* Character = nullptr;
+   ANPCCharacter* NCharacter = nullptr;
 	//neew
 	
 	if (OtherActor != nullptr)
 	{
 	
 		Character = Cast<AAI_Bot_M>(OtherActor);
+		NCharacter = Cast<ANPCCharacter>(OtherActor);
+
 		if (Character != nullptr)
 		{
 				Character->NextWaypoint = NextWaypoint;
 				full = true;
 		}
 
-
+		if (NCharacter != nullptr)
+		{
+			NCharacter->NextWaypoint = NextWaypoint;
+			full = true;
+		}
 		
 	}
 }
