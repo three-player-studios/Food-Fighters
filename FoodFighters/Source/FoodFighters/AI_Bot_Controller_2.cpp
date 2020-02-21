@@ -68,18 +68,20 @@ void AAI_Bot_Controller_2::Possess(APawn * Pawn)
 void AAI_Bot_Controller_2::Tick(float DeltaSecounds)
 {
 	Super::Tick(DeltaSecounds);
-	ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
+	//ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
 
-
-	//ai bot will move to the next waypoint if the these conditon are done 
-	if (NCharacter->NextWaypoint != nullptr)
-	{
-
-		MoveToActor(NCharacter->NextWaypoint, 5.0f);
+	////ai bot will move to the next waypoint if the these conditon are done 
+	
 	
 
-	}
+		//if (NCharacter->NextWaypoint != nullptr)
+		//{
 
+		//	MoveToActor(NCharacter->NextWaypoint, 5.0f);
+
+
+		//}
+	
 	
 	////ai bot will move to the next waypoint if the these conditon are done 
 	//if (NCharacter->NextWaypoint_2 != nullptr)
@@ -91,15 +93,15 @@ void AAI_Bot_Controller_2::Tick(float DeltaSecounds)
 
 
 	//}
-	
+	//
 
-	if (NCharacter->CURwaittime < 0)
-	{
+	//if (NCharacter->CURwaittime < 0)
+	//{
 
-		MoveToActor(NCharacter->NextWaypoint_Exit, 5.0f);
-		Destroy();
+	//	MoveToActor(NCharacter->NextWaypoint_Exit, 5.0f);
+	//	Destroy();
 
-	}
+	//}
 
 }
 
@@ -122,58 +124,3 @@ void AAI_Bot_Controller_2::OnPawnDetected(TArray<AActor*> DectectedPlayer)
 	}*/
 }
 
-void AAI_Bot_Controller_2::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
-{
-
-//	ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
-//
-//
-//	if (AiCharacter->sit == true)
-//{
-//	//ai bot will move to the next waypoint if the these conditon are done 
-//	if (NCharacter->NextWaypoint_2 != nullptr )
-//	{
-//
-//		MoveToActor(NCharacter->NextWaypoint_2, 5.0f);
-//		UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
-//
-//
-//	}
-//}
-//
-//
-//if (AiCharacter->sit2 == true)
-//{
-//	//ai bot will move to the next waypoint if the these conditon are done 
-//	if (NCharacter->NextWaypoint_3 != nullptr)
-//	{
-//
-//		MoveToActor(NCharacter->NextWaypoint_3, 5.0f);
-//		UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
-//
-//
-//	}
-//}
-}
-
-void AAI_Bot_Controller_2::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
-{
-}
-
-//void AAI_Bot_Controller_2::SpotTaken()
-////{
-////	ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
-////
-////	
-////
-////		//ai bot will move to the next waypoint if the these conditon are done 
-////		if (NCharacter->NextWaypoint_2 != nullptr)
-////		{
-////
-////			MoveToActor(NCharacter->NextWaypoint_2, 5.0f);
-////			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
-////
-////
-////		}
-////	
-//}

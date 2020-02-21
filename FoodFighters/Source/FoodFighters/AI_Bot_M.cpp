@@ -34,48 +34,18 @@ AAI_Bot_M::AAI_Bot_M()
 
 	MAXwaittime = 100;
 	CURwaittime = MAXwaittime;
-	sit = false;
-	sit2 = false;
-	sit3 = false;
+
 
 }
 
 void AAI_Bot_M::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if (NextWaypoint) 
-	{
 	
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
-
-			sit = true;
-	}
-	
-
-	if (NextWaypoint_2)
-	{
-
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
-
-		sit2 = true;
-	}
-
-	if (NextWaypoint_3)
-	{
-
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" enemy is hit  by player overlap begin"));
-
-		sit3 = true;
-	}
 }
 
 void AAI_Bot_M::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
-	sit = false;
 
-	sit2 = false;
-
-
-	sit3 = false;
 
 }
 

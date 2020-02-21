@@ -83,15 +83,15 @@ public:
 		AWaypoint_Exit* exit;
 
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AAI_Bot_M* AiCharacter ;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	AAI_Bot_M* AiCharacter ;
 
-	//// declare overlap begin function
-	UFUNCTION()
-		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	////// declare overlap begin function
+	//UFUNCTION()
+	//	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-	UFUNCTION()
-		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	//UFUNCTION()
+	//	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	
 };
