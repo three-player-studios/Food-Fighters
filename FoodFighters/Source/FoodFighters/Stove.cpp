@@ -9,6 +9,16 @@ AStove::AStove()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	// Stove Variables
+	CookingFood = nullptr;
+	CookCurrentTime = 0.0f;
+	CookTotalTime = 0.0f;
+	IsCooking = false;
+
+	// Pot Variables
+	BoilCurrentTime = 0.0f;
+	BoilTotalTime = 0.0f;
+	IsBoiling = false;
 }
 
 // Called when the game starts or when spawned
@@ -55,7 +65,7 @@ AFood* AStove::GetCookingFood()
 
 void AStove::StartCooking(AFood* Food)
 {
-	if (CookingFood != nullptr)
+	if (IsCooking == true)
 	{
 		// Have the option to cancel the currently cooking food
 	}
@@ -63,9 +73,7 @@ void AStove::StartCooking(AFood* Food)
 	{
 		CookingFood = Food;
 		IsCooking = true;
-		CookCurrentTime = 0.0f;
-		// Cook Time is Different for each food item
-		CookTotalTime = 1.0f;
+		CookTotalTime = 10.0f;
 	}
 }
 
