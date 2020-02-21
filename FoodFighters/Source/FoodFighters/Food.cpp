@@ -26,7 +26,7 @@ AFood::AFood()
 
 	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
 	CollisionSphere->InitSphereRadius(SphereRadius);
-	CollisionSphere->SetCollisionProfileName("Trigger");
+	//CollisionSphere->SetCollisionProfileName("Trigger");
 	RootComponent = CollisionSphere;
 
 
@@ -58,26 +58,23 @@ void AFood::Tick(float DeltaTime)
 
 void AFood::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	ATable* table = nullptr;
-
-
-	table = Cast<ATable>(OtherActor);
-
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-
-		
-		if (table->FoodBox2) 
+		ATable* table = Cast<ATable>(OtherActor);
+		if (table)
 		{
-			foodplace = true;
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" food is on table 2"));
-		}
-		
+			if (table->FoodBox2)
+			{
+				foodplace = true;
+				GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" food is on table 2"));
+			}
 
-		if (table->FoodBox3)
-		{
-			foodplace2 = true;
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" food is on table 3"));
+
+			if (table->FoodBox3)
+			{
+				foodplace2 = true;
+				GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT(" food is on table 3"));
+			}
 		}
 	}
 
