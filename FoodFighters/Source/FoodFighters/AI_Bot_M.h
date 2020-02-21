@@ -48,14 +48,14 @@ public:
 
 
 	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sit;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool cansit;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sit2;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool cansit2;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sit3;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool cansit3;
 
 	// tells the max of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")

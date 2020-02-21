@@ -41,13 +41,13 @@ public:
 
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sit;
+		bool sittingdown;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sit2;
+		bool sittingdown2;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sit3;
+		bool sittingdown3;
 
 
 protected:

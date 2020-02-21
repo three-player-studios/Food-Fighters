@@ -96,7 +96,7 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	}
 
 
-	if (Character->sit == true)
+	if (Character->cansit == true)
 	{
 		//ai bot will move to the next waypoint if the these conditon are done 
 		if (Character->NextWaypoint_2 != nullptr && IsTheFoodDetected == false)
@@ -110,7 +110,7 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	}
 
 
-	if (Character->sit2 == true)
+	if (Character->cansit2 == true)
 	{
 		//ai bot will move to the next waypoint if the these conditon are done 
 		if (Character->NextWaypoint_3 != nullptr && IsTheFoodDetected == false)
