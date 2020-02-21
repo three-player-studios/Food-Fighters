@@ -42,9 +42,10 @@ void AWaypoint_3::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor *
 {
 
 	AAI_Bot_M* Character = nullptr;
+	ANPCCharacter* NCharacter = nullptr;
 
 	//neew
-	full = true;
+
 	if (OtherActor != nullptr)
 	{
 
@@ -52,7 +53,15 @@ void AWaypoint_3::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor *
 		if (Character != nullptr)
 		{
 			Character->NextWaypoint_3 = NextWaypoint_3;
+			full = true;
+		}
 
+		NCharacter = Cast<ANPCCharacter>(OtherActor);
+
+		if (NCharacter != nullptr)
+		{
+			NCharacter->NextWaypoint_3 = NextWaypoint_3;
+			full = true;
 		}
 
 

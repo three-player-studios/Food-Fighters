@@ -74,7 +74,8 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 
 	//Makes a pointers of my ai bot and make into a pawn  
 	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
-	
+	ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
+
 
 	////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
 	if (DistanceFromPlayer > AIEyeRadius)
@@ -95,7 +96,7 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	}
 
 
-	if (Character->sit == true)
+	if (Character->cansit == true)
 	{
 		//ai bot will move to the next waypoint if the these conditon are done 
 		if (Character->NextWaypoint_2 != nullptr && IsTheFoodDetected == false)
@@ -109,7 +110,7 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	}
 
 
-	if (Character->sit2 == true)
+	if (Character->cansit2 == true)
 	{
 		//ai bot will move to the next waypoint if the these conditon are done 
 		if (Character->NextWaypoint_3 != nullptr && IsTheFoodDetected == false)
