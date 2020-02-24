@@ -72,65 +72,65 @@ void AAI_Bot_Controller_M::Tick(float DeltaSecounds)
 	/*OnPlayerFound();*/
 	//OnPreyFound();
 
-	//Makes a pointers of my ai bot and make into a pawn  
-	AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
-	ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
+	////Makes a pointers of my ai bot and make into a pawn  
+	//AAI_Bot_M* Character = Cast<AAI_Bot_M>(GetPawn());
+	//ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
 
 
-	////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
-	if (DistanceFromPlayer > AIEyeRadius)
-	{
-		IsThePlayerDetected = false;
-		UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
-	}
+	//////// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	//if (DistanceFromPlayer > AIEyeRadius)
+	//{
+	//	IsThePlayerDetected = false;
+	//	UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	//}
+	
+
+	////ai bot will move to the next waypoint if the these conditon are done 
+	//if (Character->NextWaypoint != nullptr && IsTheFoodDetected == false)
+	//{
+
+	//	MoveToActor(Character->NextWaypoint, 5.0f);
+	//	UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
 
 
-	//ai bot will move to the next waypoint if the these conditon are done 
-	if (Character->NextWaypoint != nullptr && IsTheFoodDetected == false)
-	{
-
-		MoveToActor(Character->NextWaypoint, 5.0f);
-		UE_LOG(LogTemp, Warning, TEXT(" going to waypont"));
+	//}
 
 
-	}
+	//if (Character->cansit == true)
+	//{
+	//	//ai bot will move to the next waypoint if the these conditon are done 
+	//	if (Character->NextWaypoint_2 != nullptr && IsTheFoodDetected == false)
+	//	{
+
+	//		MoveToActor(Character->NextWaypoint_2, 5.0f);
+	//		UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
 
 
-	if (Character->cansit == true)
-	{
-		//ai bot will move to the next waypoint if the these conditon are done 
-		if (Character->NextWaypoint_2 != nullptr && IsTheFoodDetected == false)
-		{
-
-			MoveToActor(Character->NextWaypoint_2, 5.0f);
-			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
+	//	}
+	//}
 
 
-		}
-	}
+	//if (Character->cansit2 == true)
+	//{
+	//	//ai bot will move to the next waypoint if the these conditon are done 
+	//	if (Character->NextWaypoint_3 != nullptr && IsTheFoodDetected == false)
+	//	{
+
+	//		MoveToActor(Character->NextWaypoint_3, 5.0f);
+	//		UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
 
 
-	if (Character->cansit2 == true)
-	{
-		//ai bot will move to the next waypoint if the these conditon are done 
-		if (Character->NextWaypoint_3 != nullptr && IsTheFoodDetected == false)
-		{
-
-			MoveToActor(Character->NextWaypoint_3, 5.0f);
-			UE_LOG(LogTemp, Warning, TEXT(" going to waypont 3"));
+	//	}
+	//}
 
 
-		}
-	}
+	//if (Character->CURwaittime < 0)
+	//{
 
+	//	MoveToActor(Character->NextWaypoint_Exit, 5.0f);
+	//	Destroy();
 
-	if (Character->CURwaittime < 0)
-	{
-
-		MoveToActor(Character->NextWaypoint_Exit, 5.0f);
-		Destroy();
-
-	}
+	//}
 
 
 }
