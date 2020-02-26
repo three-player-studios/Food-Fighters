@@ -20,8 +20,8 @@ ANPCCharacter::ANPCCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 600.0f, 0.0f);
 
 
-	MAXwaittime = 100;
-	CURwaittime = MAXwaittime;
+	//MAXwaittime = 100;
+	//hCURwaittime = MAXwaittime;
 
 }
 
