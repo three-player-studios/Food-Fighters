@@ -10,8 +10,8 @@ ATable::ATable()
 	PrimaryActorTick.bCanEverTick = true;
 
 	FoodBox = CreateDefaultSubobject<UBoxComponent>(TEXT("FoodComponent"));
-	FoodBox2 = CreateDefaultSubobject<UBoxComponent>(TEXT("FoodComponent2"));
-	FoodBox3 = CreateDefaultSubobject<UBoxComponent>(TEXT("FoodComponent3"));
+	//FoodBox2 = CreateDefaultSubobject<UBoxComponent>(TEXT("FoodComponent2"));
+	//FoodBox3 = CreateDefaultSubobject<UBoxComponent>(TEXT("FoodComponent3"));
 
 
 	RootComponent = FoodBox;
