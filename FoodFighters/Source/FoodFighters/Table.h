@@ -38,11 +38,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
 		class UBoxComponent* FoodBox;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
-		class UBoxComponent* FoodBox2;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
-		class UBoxComponent* FoodBox3;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
+	//	class UBoxComponent* FoodBox2;
+	//
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
+	//	class UBoxComponent* FoodBox3;
 	
 
 	// make mesh component
