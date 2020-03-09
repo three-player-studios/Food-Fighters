@@ -21,6 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	/* STOVE VARIABLES */
 	// Food currently cooking inside
 	AFood* CookingFood;
 
@@ -33,6 +34,7 @@ private:
 	// Check is something is cooking
 	bool IsCooking;
 
+	/* POT VARIABLES */
 	// Food being boiled in the pot
 	TArray<AFood*> BoilingItems;
 
@@ -45,12 +47,12 @@ private:
 	// Check is something is boiling
 	bool IsBoiling;
 
-	void CookFood();
-
-	void BoilFood();
-
-	void PotSound();
-
+	UFUNCTION()
+		void CookFood();
+	UFUNCTION()
+		void BoilFood();
+	UFUNCTION()
+		void PotSound();
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -65,5 +67,5 @@ public:
 		void StartBoilingFood(TArray<AFood*> FoodItems);
 
 	UFUNCTION(BlueprintCallable)
-		void AddItemToPot(AFood* Food);
+		void AddItemToPot(AFood* Food);	
 };
