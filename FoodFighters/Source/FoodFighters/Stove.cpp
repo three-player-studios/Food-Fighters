@@ -16,6 +16,7 @@ AStove::AStove()
 	IsCooking = false;
 
 	// Pot Variables
+	BoilingFood = nullptr;
 	BoilCurrentTime = 0.0f;
 	BoilTotalTime = 0.0f;
 	IsBoiling = false;
@@ -50,7 +51,11 @@ void AStove::CookFood()
 
 void AStove::BoilFood()
 {
-
+	BoilCurrentTime += 1.0f;
+	if (BoilCurrentTime == BoilTotalTime)
+	{
+		IsBoiling = false;
+	}
 }
 
 void AStove::PotSound()
@@ -63,26 +68,33 @@ AFood* AStove::GetCookingFood()
 	return CookingFood;
 }
 
+bool AStove::GetIsCooking()
+{
+	return IsCooking;
+}
+
+AFood* AStove::GetBoilingFood()
+{
+	return BoilingFood;
+}
+
+bool AStove::GetIsBoiling()
+{
+	return IsBoiling;
+}
+
 void AStove::StartCooking(AFood* Food)
 {
-	if (IsCooking == true)
-	{
-		// Have the option to cancel the currently cooking food
-	}
-	else
-	{
-		CookingFood = Food;
-		IsCooking = true;
-		CookTotalTime = 10.0f;
-	}
+	CookingFood = Food;
+	IsCooking = true;
+	CookCurrentTime = 0.0f;
+	CookTotalTime = Food->CookTime;
 }
 
-void AStove::StartBoilingFood(TArray<AFood*> FoodItems)
+void AStove::StartBoiling(AFood* Food)
 {
-
-}
-
-void AStove::AddItemToPot(AFood* Food)
-{
-	
+	BoilingFood = Food;
+	IsCooking = true;
+	BoilCurrentTime = 0.0f;
+	BoilTotalTime = Food->CookTime;
 }
