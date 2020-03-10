@@ -36,7 +36,7 @@ private:
 
 	/* POT VARIABLES */
 	// Food being boiled in the pot
-	TArray<AFood*> BoilingItems;
+	AFood* BoilingFood;
 
 	// Current time being cooked
 	float BoilCurrentTime;
@@ -61,11 +61,17 @@ public:
 		AFood* GetCookingFood();
 
 	UFUNCTION(BlueprintCallable)
+		bool GetIsCooking();
+
+	UFUNCTION(BlueprintCallable)
+		AFood* GetBoilingFood();
+
+	UFUNCTION(BlueprintCallable)
+		bool GetIsBoiling();
+
+	UFUNCTION(BlueprintCallable)
 		void StartCooking(AFood* Food);
 	
 	UFUNCTION(BlueprintCallable)
-		void StartBoilingFood(TArray<AFood*> FoodItems);
-
-	UFUNCTION(BlueprintCallable)
-		void AddItemToPot(AFood* Food);	
+		void StartBoiling(AFood* Food);
 };

@@ -39,13 +39,22 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		FString Name;
 
+	// image of the object
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
 		UTexture2D* Image;
 
+	// cook time of the object
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
+		float CookTime;
+
+	// boil time of the object
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemInfo)
+		float BoilTime;
 
 	//defines USceneComponent
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		USceneComponent* Root;
+
 	//defines UBoxComponent
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		UBoxComponent* BoxComponent;
