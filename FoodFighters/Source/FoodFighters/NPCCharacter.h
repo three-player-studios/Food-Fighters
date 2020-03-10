@@ -30,6 +30,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint_3* NextWaypoint_3;
 
+
+
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class AWaypoint_Checkout* NextWaypoint_Checkout;
