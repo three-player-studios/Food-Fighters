@@ -2,7 +2,7 @@
 
 #include "AI_Bot_Controller_2.h"
 #include "NPCCharacter.h"
-#include "Waypoint.h"
+//#include "Waypoint.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -69,10 +69,9 @@ void AAI_Bot_Controller_2::Tick(float DeltaSecounds)
 {
 	Super::Tick(DeltaSecounds);
 	//ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
+////ai bot will move to the next waypoint if the these conditon are done 
+	
 
-	////ai bot will move to the next waypoint if the these conditon are done 
-	
-	
 
 		//if (NCharacter->NextWaypoint != nullptr)
 		//{
