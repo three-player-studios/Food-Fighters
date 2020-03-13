@@ -7,6 +7,7 @@
 #include "FoodFighters/AI_Bot_M.h"
 #include "FoodFighters/Armor.h"
 #include "FoodFighters/items.h"
+#include "FoodFighters/Food.h"
 #include "FoodFighters/Weapons.h"
 #include "FoodFightersCharacter.generated.h"
 
@@ -66,6 +67,9 @@ public:
 	// player inventory amount
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
 		int InventoryCurrentSize;
+	// player held food
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Food)
+		AFood* HeldFood;
 
 	//base stat
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stat)

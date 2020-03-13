@@ -40,6 +40,8 @@ AFood::AFood()
 	foodplace = false;
 	foodplace2 = false;
 
+	CookTime = 10.0f;
+	BoilTime = 5.0f;
 }
 
 // Called when the game starts or when spawned
