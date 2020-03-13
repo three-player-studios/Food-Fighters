@@ -4,74 +4,59 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Food.h"
+#include "FoodFighters/FoodFightersCharacter.h"
+#include "FoodFighters/Food.h"
 #include "Stove.generated.h"
 
 UCLASS()
 class FOODFIGHTERS_API AStove : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AStove();
+
+	/* STOVE VARIABLES */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Stove)
+		AFood* CookingFood;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Stove)
+		float CookCurrentTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Stove)
+		float CookTotalTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Stove)
+		bool IsCooking;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Stove)
+		bool DoneCooking;
+
+	/* POT VARIABLES */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Pot)
+		AFood* BoilingFood;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Pot)
+		float BoilCurrentTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Pot)
+		float BoilTotalTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Pot)
+		bool IsBoiling;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Pot)
+		bool DoneBoiling;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	/* STOVE VARIABLES */
-	// Food currently cooking inside
-	AFood* CookingFood;
-
-	// Current time being cooked
-	float CookCurrentTime;
-
-	// Total Time needed to be cooked
-	float CookTotalTime;
-
-	// Check is something is cooking
-	bool IsCooking;
-
-	/* POT VARIABLES */
-	// Food being boiled in the pot
-	AFood* BoilingFood;
-
-	// Current time being cooked
-	float BoilCurrentTime;
-
-	// Total Time needed to be cooked
-	float BoilTotalTime;
-
-	// Check is something is boiling
-	bool IsBoiling;
-
 	UFUNCTION()
 		void CookFood();
 	UFUNCTION()
 		void BoilFood();
-	UFUNCTION()
-		void PotSound();
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-		AFood* GetCookingFood();
+		bool StartCooking(AFoodFightersCharacter* Player);
 
 	UFUNCTION(BlueprintCallable)
-		bool GetIsCooking();
-
-	UFUNCTION(BlueprintCallable)
-		AFood* GetBoilingFood();
-
-	UFUNCTION(BlueprintCallable)
-		bool GetIsBoiling();
-
-	UFUNCTION(BlueprintCallable)
-		void StartCooking(AFood* Food);
-	
-	UFUNCTION(BlueprintCallable)
-		void StartBoiling(AFood* Food);
+		bool StartBoiling(AFoodFightersCharacter* Player);
 };

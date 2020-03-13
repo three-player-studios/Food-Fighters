@@ -14,12 +14,14 @@ AStove::AStove()
 	CookCurrentTime = 0.0f;
 	CookTotalTime = 0.0f;
 	IsCooking = false;
+	DoneCooking = false;
 
 	// Pot Variables
 	BoilingFood = nullptr;
 	BoilCurrentTime = 0.0f;
 	BoilTotalTime = 0.0f;
 	IsBoiling = false;
+	DoneBoiling = false;
 }
 
 // Called when the game starts or when spawned
@@ -38,6 +40,10 @@ void AStove::Tick(float DeltaTime)
 	{
 		CookFood();
 	}
+	if (IsBoiling == true)
+	{
+		BoilFood();
+	}
 }
 
 void AStove::CookFood()
@@ -46,6 +52,7 @@ void AStove::CookFood()
 	if (CookCurrentTime == CookTotalTime)
 	{
 		IsCooking = false;
+		DoneCooking = true;
 	}
 }
 
@@ -55,46 +62,46 @@ void AStove::BoilFood()
 	if (BoilCurrentTime == BoilTotalTime)
 	{
 		IsBoiling = false;
+		DoneBoiling = true;
 	}
 }
 
-void AStove::PotSound()
+bool AStove::StartCooking(AFoodFightersCharacter* Player)
 {
-
+	// First check if player is currently holding food
+	if (Player->HeldFood == nullptr)
+	{
+		return false;
+	}
+	else
+	{
+		// Then add the food to Stove
+		CookingFood = Player->HeldFood;
+		IsCooking = true;
+		DoneCooking = false;
+		CookCurrentTime = 0.0f;
+		CookTotalTime = CookingFood->CookTime;
+		// Return true so we can use the attach the food to stove in blueprints
+		return true;
+	}
 }
 
-AFood* AStove::GetCookingFood()
+bool AStove::StartBoiling(AFoodFightersCharacter* Player)
 {
-	return CookingFood;
-}
-
-bool AStove::GetIsCooking()
-{
-	return IsCooking;
-}
-
-AFood* AStove::GetBoilingFood()
-{
-	return BoilingFood;
-}
-
-bool AStove::GetIsBoiling()
-{
-	return IsBoiling;
-}
-
-void AStove::StartCooking(AFood* Food)
-{
-	CookingFood = Food;
-	IsCooking = true;
-	CookCurrentTime = 0.0f;
-	CookTotalTime = Food->CookTime;
-}
-
-void AStove::StartBoiling(AFood* Food)
-{
-	BoilingFood = Food;
-	IsCooking = true;
-	BoilCurrentTime = 0.0f;
-	BoilTotalTime = Food->CookTime;
+	// First check if player is currently holding food
+	if (Player->HeldFood == nullptr)
+	{
+		return false;
+	}
+	else
+	{
+		// Then add the food to Pot
+		BoilingFood = Player->HeldFood;
+		IsBoiling = true;
+		DoneBoiling = false;
+		BoilCurrentTime = 0.0f;
+		BoilTotalTime = BoilingFood->CookTime;
+		// Return true so we can use the attach the food to pot in blueprints
+		return true;
+	}
 }
