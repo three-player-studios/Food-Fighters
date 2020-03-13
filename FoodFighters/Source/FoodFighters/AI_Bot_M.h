@@ -25,37 +25,32 @@ public:
 	// Sets default values for this character's properties
 	AAI_Bot_M();
 
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint* NextWaypoint;
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint* NextWaypoint;
 
 
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_2* NextWaypoint_2;
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_2* NextWaypoint_2;
 
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_3* NextWaypoint_3;
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_3* NextWaypoint_3;
 
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_Checkout* NextWaypoint_Checkout;
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_Checkout* NextWaypoint_Checkout;
 
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_Exit* NextWaypoint_Exit;
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_Exit* NextWaypoint_Exit;
 
 
 	//defines refence of the waypoint 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		bool cansit;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-		bool cansit2;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-		bool cansit3;
 
 	// tells the max of the enemy 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")

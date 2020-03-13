@@ -18,38 +18,35 @@ public:
 	// Sets default values for this character's properties
 	ANPCCharacter();
 
-	//defines refence of the waypoint 
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint* NextWaypoint;
+
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_2* NextWaypoint_2;
+
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_3* NextWaypoint_3;
+
+
+
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_Checkout* NextWaypoint_Checkout;
+
+	////defines refence of the waypoint 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class AWaypoint_Exit* NextWaypoint_Exit;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint* NextWaypoint;
-
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_2* NextWaypoint_2;
-
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_3* NextWaypoint_3;
-
-
-
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_Checkout* NextWaypoint_Checkout;
-
-	//defines refence of the waypoint 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class AWaypoint_Exit* NextWaypoint_Exit;
-
+		class ASpawn_NPC_Controller* spawnManager;
 
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool sittingdown;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sittingdown2;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool sittingdown3;
 
 
 protected:

@@ -23,11 +23,9 @@ protected:
 	/** The pickup to spawn*/
 	UPROPERTY(EditAnywhere, Category = "Spawning")
 		//TSubclassOf<class ANPCCharacter> WhatToSpawn;
-	TSubclassOf<class UObject> WhatToSpawn;
+	TSubclassOf<class ANPCCharacter> WhatToSpawn;
 
-	UPROPERTY(EditAnywhere, Category = "Spawning")
-		//TSubclassOf<class ANPCCharacter> WhatToSpawn;
-		TSubclassOf<class UObject> Manager;
+
 	
 	//will handle when to spawn
 	FTimerHandle SpawnTimer;

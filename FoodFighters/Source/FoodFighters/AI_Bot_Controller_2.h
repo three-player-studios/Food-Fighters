@@ -6,11 +6,12 @@
 #include "AIController.h"
 #include "NPCCharacter.h"
 #include "AI_Bot_M.h"
-#include "Waypoint.h"
-#include "Waypoint_Exit.h"
-#include "Waypoint_Checkout.h"
-#include "Waypoint_3.h"
-#include "Waypoint_2.h"
+//#include "Waypoint.h"
+//#include "Waypoint_Exit.h"
+//#include "Waypoint_Checkout.h"
+//#include "Waypoint_3.h"
+//#include "Waypoint_2.h"
+#include "Spawn_NPC_Controller.h"
 #include "Food.h"
 #include "AI_Bot_Controller_2.generated.h"
 
@@ -67,20 +68,20 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceToPlayer = 0.0f;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AWaypoint* chair_1;
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AWaypoint_2* chair_2;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	AWaypoint* chair_1;
+	//
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	AWaypoint_2* chair_2;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AWaypoint_3* chair_3;
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AWaypoint_Checkout* checkout;
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		AWaypoint_Exit* exit;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	AWaypoint_3* chair_3;
+	//
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	AWaypoint_Checkout* checkout;
+	//
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	//	AWaypoint_Exit* exit;
 
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
