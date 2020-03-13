@@ -44,24 +44,24 @@ void AWaypoint_Checkout::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, A
 	ANPCCharacter* NCharacter = nullptr;
 	//neew
 
-	if (OtherActor != nullptr)
-	{
+	//if (OtherActor != nullptr)
+	//{
 
-		Character = Cast<AAI_Bot_M>(OtherActor);
-		if (Character != nullptr)
-		{
-			Character->NextWaypoint_Checkout = NextWaypoint_Checkout;
-			/*full = true;*/
-		}
+	//	Character = Cast<AAI_Bot_M>(OtherActor);
+	//	if (Character != nullptr)
+	//	{
+	//		Character->NextWaypoint_Checkout = NextWaypoint_Checkout;
+	//		/*full = true;*/
+	//	}
 
 
-		NCharacter = Cast<ANPCCharacter>(OtherActor);
+	//	NCharacter = Cast<ANPCCharacter>(OtherActor);
 
-		if (NCharacter != nullptr)
-		{
-			NCharacter->NextWaypoint_Checkout = NextWaypoint_Checkout;
-			full = true;
-		}
-	}
+	//	if (NCharacter != nullptr)
+	//	{
+	//		NCharacter->NextWaypoint_Checkout = NextWaypoint_Checkout;
+	//		full = true;
+	////	}
+	//}
 }
 

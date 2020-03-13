@@ -47,7 +47,7 @@ void AWaypoint_Exit::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActo
 	if (OtherActor != nullptr)
 	{
 
-		Character = Cast<AAI_Bot_M>(OtherActor);
+	/*	Character = Cast<AAI_Bot_M>(OtherActor);
 		if (Character != nullptr)
 		{	full = true;
 			Character->NextWaypoint_Exit = NextWaypoint_Exit;
@@ -58,7 +58,7 @@ void AWaypoint_Exit::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActo
 		{
 			NCharacter->NextWaypoint_Exit = NextWaypoint_Exit;
 			full = true;
-		}
+		}*/
 	}
 }
 

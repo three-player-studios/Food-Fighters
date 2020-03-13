@@ -80,9 +80,9 @@ void ASpawn_NPC_Controller::SpawnPickup()
 			SpawnRotation.Roll = 0/*FMath::FRand() * 360.0f*/;
 
 			// spawn the pickup
-			//ANPCCharacter* const SpawnedPickup = World->SpawnActor<ANPCCharacter>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
+			ANPCCharacter* const SpawnedPickup = World->SpawnActor<ANPCCharacter>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
 			//ACharacter
-			UObject* const SpawnedPickup = World->SpawnActor<UObject>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
+			//UObject* const SpawnedPickup = World->SpawnActor<UObject>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
 	
 			//spawn between the values of SpawnDelayRangeLow and SpawnDelayRangeHigh
 			SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);

@@ -48,20 +48,20 @@ void AWaypoint_2::OnPlayerEnter(UPrimitiveComponent * OverlapComponent, AActor *
 	if (OtherActor != nullptr)
 	{
 
-		Character = Cast<AAI_Bot_M>(OtherActor);
-		NCharacter = Cast<ANPCCharacter>(OtherActor);
+		//Character = Cast<AAI_Bot_M>(OtherActor);
+		//NCharacter = Cast<ANPCCharacter>(OtherActor);
 
-		if (Character != nullptr)
-		{
-			Character->NextWaypoint_2 = NextWaypoint_2;
-			full = true;
-		}
+		//if (Character != nullptr)
+		//{
+		//	Character->NextWaypoint_2 = NextWaypoint_2;
+		//	full = true;
+		//}
 
-		if (NCharacter != nullptr)
-		{
-			NCharacter->NextWaypoint_2 = NextWaypoint_2;
-			full = true;
-		}
+		//if (NCharacter != nullptr)
+		//{
+		//	NCharacter->NextWaypoint_2 = NextWaypoint_2;
+		//	full = true;
+		//}
 
 
 	}
