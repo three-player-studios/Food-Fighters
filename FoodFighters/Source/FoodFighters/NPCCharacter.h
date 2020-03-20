@@ -40,12 +40,19 @@ public:
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	//	class AWaypoint_Exit* NextWaypoint_Exit;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class ASpawn_NPC_Controller* spawnManager;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class ASpawn_NPC_Controller* spawnManager;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+		AActor* TablePlacementManger;
+
+
+	
 
 	//defines refence of the waypoint 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool sittingdown;
+
 
 
 

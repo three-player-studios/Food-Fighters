@@ -19,7 +19,7 @@ ASpawn_NPC_Controller::ASpawn_NPC_Controller()
 
 	//Set the spawn delay range
 	SpawnDelayRangeLow = 1.0f;
-	SpawnDelayRangeHigh = 4.5f;
+	SpawnDelayRangeHigh = 2.5f;
 }
 
 // Called when the game starts or when spawned
@@ -31,7 +31,7 @@ void ASpawn_NPC_Controller::BeginPlay()
 	// spawn Between Max and min time 
 	SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
 	//Manages all timer in world 
-	GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawn_NPC_Controller::SpawnPickup, SpawnDelay, false);
+	GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawn_NPC_Controller::SpawnNPC, SpawnDelay, false);
 
 }
 
@@ -51,7 +51,7 @@ FVector ASpawn_NPC_Controller::GetRandomPointInVolume()
 
 }
 
-void ASpawn_NPC_Controller::SpawnPickup()
+void ASpawn_NPC_Controller::SpawnNPC()
 {
 	// If we have set something to spawn:
 	if (WhatToSpawn != NULL)
@@ -61,9 +61,6 @@ void ASpawn_NPC_Controller::SpawnPickup()
 		if (World)
 		{
 			// Set the spawn parameters
-		/*	FActorSpawnParameters SpawnParams;
-			SpawnParams.Owner = this;
-			SpawnParams.Instigator = Instigator;*/
 
 			FActorSpawnParameters SpawnParams;
 			SpawnParams.Owner = this;
@@ -80,17 +77,24 @@ void ASpawn_NPC_Controller::SpawnPickup()
 			SpawnRotation.Roll = 0/*FMath::FRand() * 360.0f*/;
 
 			// spawn the pickup
-			ANPCCharacter* const SpawnedPickup = World->SpawnActor<ANPCCharacter>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
+			ANPCCharacter* SpawnedNPC = World->SpawnActor<ANPCCharacter>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
 			//ACharacter
-			//UObject* const SpawnedPickup = World->SpawnActor<UObject>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
-	
+			
+			//
+			SpawnedNPC->TablePlacementManger = TablePlacementManger;
+		
 			//spawn between the values of SpawnDelayRangeLow and SpawnDelayRangeHigh
 			SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
-			GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawn_NPC_Controller::SpawnPickup, SpawnDelay, false);
+			GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawn_NPC_Controller::SpawnNPC, SpawnDelay, false);
 
 		}
 	}
 
 
+}
+
+void ASpawn_NPC_Controller::Setmanger()
+{
+	
 }
 

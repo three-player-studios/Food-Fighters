@@ -26,7 +26,9 @@ protected:
 	TSubclassOf<class ANPCCharacter> WhatToSpawn;
 
 
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+		AActor* TablePlacementManger;
+
 	//will handle when to spawn
 	FTimerHandle SpawnTimer;
 	
@@ -52,12 +54,15 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
 		class UBoxComponent* WhereToSpawn;
 
+	
+
 	/** Handle spawning a new pickup */
-	void SpawnPickup();
+	void SpawnNPC();
+	void Setmanger();
 
 	/** The current spawn delay */
 	float SpawnDelay;
 
-	
+
 	
 };

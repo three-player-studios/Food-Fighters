@@ -2,7 +2,7 @@
 
 #include "AI_Bot_Controller_2.h"
 #include "NPCCharacter.h"
-//#include "Waypoint.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -69,38 +69,27 @@ void AAI_Bot_Controller_2::Tick(float DeltaSecounds)
 {
 	Super::Tick(DeltaSecounds);
 	//ANPCCharacter* NCharacter = Cast<ANPCCharacter>(GetPawn());
-////ai bot will move to the next waypoint if the these conditon are done 
-	
-
-
-		//if (NCharacter->NextWaypoint != nullptr)
-		//{
-
-		//	MoveToActor(NCharacter->NextWaypoint, 5.0f);
-
-
-		//}
-	
-	
-	////ai bot will move to the next waypoint if the these conditon are done 
-	//if (NCharacter->NextWaypoint_2 != nullptr)
-	//{
-
-	//	MoveToActor(NCharacter->NextWaypoint_2, 5.0f);
-	//	UE_LOG(LogTemp, Warning, TEXT(" going to waypont 2"));
-
-
-
-	//}
+	//////ai bot will move to the next waypoint if the these conditon are done 
 	//
-
-	//if (NCharacter->CURwaittime < 0)
+	//// if thre Distance From the Player is greater the AIEyeRadius then bot wiil see nothing 
+	//if (DistanceToPlayer > AIEyeRadius)
 	//{
+	//	IsThePlayerDetected = false;
+	//	UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	//}
 
-	//	MoveToActor(NCharacter->NextWaypoint_Exit, 5.0f);
-	//	Destroy();
+	//// ai bot will move to the next waypoint if it does not see the player  
+	//if ( IsThePlayerDetected == false)
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("I dont see anything im just going to keep patroling"));
+	//}
+	//// if the player is seen ai bot will chase after player 
+	//else if (IsThePlayerDetected == true)
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("I  see you %f "), NCharacter->GetActorLocation());
 
 	//}
+
 
 }
 
@@ -117,9 +106,16 @@ FRotator AAI_Bot_Controller_2::GetControlRotation() const
 
 void AAI_Bot_Controller_2::OnPawnDetected(TArray<AActor*> DectectedPlayer)
 {
-	/*if (DectectedPlayer.Num() > 0) 
+	//gets distance between ai bot and player 
+	for (size_t i = 0; i < DectectedPlayer.Num(); i++)
 	{
-	
-	}*/
+		DistanceToPlayer = GetPawn()->GetDistanceTo(DectectedPlayer[i]);
+		UE_LOG(LogTemp, Warning, TEXT("I see the player %f "), DistanceToPlayer);
+	}
+
+	//player is found 
+	IsThePlayerDetected = true;
+
 }
+
 
