@@ -43,7 +43,7 @@ public:
 
 	// the radius of sight the ai bot can see 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-		float AIEyeRadius = 3500.0f;
+		float AIEyeRadius = 500.0f;
 
 	// how long the ai will remeber the player 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
@@ -67,25 +67,14 @@ public:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
 		float DistanceToPlayer = 0.0f;
-	
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-	//	AWaypoint* chair_1;
-	//
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-	//	AWaypoint_2* chair_2;
-
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-	//	AWaypoint_3* chair_3;
-	//
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-	//	AWaypoint_Checkout* checkout;
-	//
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-	//	AWaypoint_Exit* exit;
 
 
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
-	//	AAI_Bot_M* AiCharacter ;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "AI")
+	FVector NPCLoc;
+
+
+	/** Find a random point within the BoxComponent */
+
 
 	////// declare overlap begin function
 	//UFUNCTION()

@@ -30,6 +30,8 @@ ANPCCharacter::ANPCCharacter()
 void ANPCCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+
 	
 }
 
