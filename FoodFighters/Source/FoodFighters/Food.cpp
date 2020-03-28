@@ -29,11 +29,11 @@ AFood::AFood()
 	//CollisionSphere->SetCollisionProfileName("Trigger");
 	RootComponent = CollisionSphere;
 
+	FoodMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Food Mesh"));
+	FoodMesh->SetupAttachment(RootComponent);
 
-
-
-	MyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("My Mesh"));
-	MyMesh->SetupAttachment(RootComponent);
+	PlateMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Plate Mesh"));
+	PlateMesh->SetupAttachment(RootComponent);
 
 	CollisionSphere->OnComponentBeginOverlap.AddDynamic(this, &AFood::OnOverlapBegin);
 
@@ -48,7 +48,7 @@ AFood::AFood()
 void AFood::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	PlateMesh->SetVisibility(false);
 }
 
 // Called every frame
@@ -56,6 +56,11 @@ void AFood::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AFood::SetPlateVisibility(bool Visible)
+{
+	PlateMesh->SetVisibility(Visible);
 }
 
 void AFood::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
@@ -79,6 +84,5 @@ void AFood::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherA
 	//		}
 	//	}
 	//}
-
 }
 
