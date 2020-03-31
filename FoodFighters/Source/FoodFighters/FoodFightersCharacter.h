@@ -4,11 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "FoodFighters/AI_Bot_M.h"
-#include "FoodFighters/Armor.h"
 #include "FoodFighters/items.h"
 #include "FoodFighters/Food.h"
-#include "FoodFighters/Weapons.h"
 #include "FoodFightersCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -47,17 +44,6 @@ public:
 	// player image
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
 		UTexture2D* PlayerImage;
-	// player image
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
-		AArmor* HatArmor;
-	// player image
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
-		AArmor* BodyArmor;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
-		AWeapons* MainWeapon;
-	// player image
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Info)
-		AWeapons* SubWeapon;
 	// player inventory
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
 		TArray<Aitems*> Inventory;
