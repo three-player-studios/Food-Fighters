@@ -65,7 +65,11 @@ public:
 
 	// make mesh component
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class UStaticMeshComponent* MyMesh;
+		class UStaticMeshComponent* FoodMesh;
+
+	// plate mesh component
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class UStaticMeshComponent* PlateMesh;
 
 	//// collision component
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ItemPoints)
@@ -81,9 +85,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool foodplace2;
 
+	UFUNCTION(BlueprintCallable)
+		void SetPlateVisibility(bool Visible);
 
 	UFUNCTION()
 		void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
-
 };
