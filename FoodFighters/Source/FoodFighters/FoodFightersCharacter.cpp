@@ -11,8 +11,6 @@
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Weapons.h"
-#include "Armor.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h" 
 #include "DrawDebugHelpers.h"
 #include "KitchenDesk.h"
@@ -131,19 +129,7 @@ void AFoodFightersCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 ///arifa added this hit box collision
 void AFoodFightersCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
-	{
-
-		AAI_Bot_M* Eactor = Cast<AAI_Bot_M>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));;
-			if (&AAI_Bot_M::triggerC && !&AAI_Bot_M::GetMesh) {
-				CURHealth -= Eactor->CURSTR;
-			}
-
-
-			if(&AAI_Bot_M::Head && !&AAI_Bot_M::GetMesh) {
-				CURHealth -= Eactor->CURSTR;
-			}
-	}
+	
 
 }
 ///arifa added this hit box collision
