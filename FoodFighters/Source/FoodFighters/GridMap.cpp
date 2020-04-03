@@ -103,14 +103,14 @@ void AGridMap::GridNumSize()
 	}
 	
 
-	//gets the right side vule
-	FVector rightx = Scene->GetRightVector() * (x * TileSizeNumber);
+	////gets the right side vule
+	//FVector rightx = Scene->GetRightVector() * (x * TileSizeNumber);
 
-	Gridbuttomleft() + rightx;
+	//Gridbuttomleft() + rightx;
 
 
-	//draws debug box to show size of grid map on buttm left
-	DrawDebugBox(GetWorld(), buttomlefttotal, FVector(20, 20, 5), FColor::Red, true, 999, 0, 10);
+	////draws debug box to show size of grid map on buttm left
+	//DrawDebugBox(GetWorld(), buttomlefttotal, FVector(20, 20, 5), FColor::Red, true, 999, 0, 10);
 
 
 
