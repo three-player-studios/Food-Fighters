@@ -23,6 +23,10 @@
 		{
 			"Name": "TimeManager",
 			"Enabled": false
+		},
+		{
+			"Name": "ApexDestruction",
+			"Enabled": true
 		}
 	]
 }
