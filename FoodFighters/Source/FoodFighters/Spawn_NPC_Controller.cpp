@@ -10,7 +10,7 @@
 // Sets default values
 ASpawn_NPC_Controller::ASpawn_NPC_Controller()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Create the Box Component to represent the spawn volume
@@ -26,7 +26,7 @@ ASpawn_NPC_Controller::ASpawn_NPC_Controller()
 void ASpawn_NPC_Controller::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 
 	// spawn Between Max and min time 
 	SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
@@ -73,16 +73,16 @@ void ASpawn_NPC_Controller::SpawnNPC()
 			// Get a  rotation for the spawned item
 			FRotator SpawnRotation;
 			SpawnRotation.Yaw = 0;/*FMath::FRand() * 360.0f;*/
-			SpawnRotation.Pitch =0 /*FMath::FRand() * 360.0f*/;
+			SpawnRotation.Pitch = 0 /*FMath::FRand() * 360.0f*/;
 			SpawnRotation.Roll = 0/*FMath::FRand() * 360.0f*/;
 
 			// spawn the pickup
 			ANPCCharacter* SpawnedNPC = World->SpawnActor<ANPCCharacter>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
 			//ACharacter
-			
+
 			//
 			SpawnedNPC->TablePlacementManger = TablePlacementManger;
-		
+
 			//spawn between the values of SpawnDelayRangeLow and SpawnDelayRangeHigh
 			SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
 			GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawn_NPC_Controller::SpawnNPC, SpawnDelay, false);
@@ -95,6 +95,6 @@ void ASpawn_NPC_Controller::SpawnNPC()
 
 void ASpawn_NPC_Controller::Setmanger()
 {
-	
+
 }
 
