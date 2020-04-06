@@ -11,8 +11,8 @@ UCLASS()
 class FOODFIGHTERS_API ASpawn_NPC_Controller : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ASpawn_NPC_Controller();
 
@@ -23,7 +23,7 @@ protected:
 	/** The pickup to spawn*/
 	UPROPERTY(EditAnywhere, Category = "Spawning")
 		//TSubclassOf<class ANPCCharacter> WhatToSpawn;
-	TSubclassOf<class ANPCCharacter> WhatToSpawn;
+		TSubclassOf<class ANPCCharacter> WhatToSpawn;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
@@ -31,7 +31,7 @@ protected:
 
 	//will handle when to spawn
 	FTimerHandle SpawnTimer;
-	
+
 	/** Minimum spawn delay */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 		float SpawnDelayRangeLow;
@@ -40,7 +40,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 		float SpawnDelayRangeHigh;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -54,7 +54,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
 		class UBoxComponent* WhereToSpawn;
 
-	
+
 
 	/** Handle spawning a new pickup */
 	void SpawnNPC();
@@ -64,5 +64,5 @@ private:
 	float SpawnDelay;
 
 
-	
+
 };
