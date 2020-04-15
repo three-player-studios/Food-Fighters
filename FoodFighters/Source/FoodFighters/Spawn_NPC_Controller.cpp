@@ -18,8 +18,8 @@ ASpawn_NPC_Controller::ASpawn_NPC_Controller()
 	RootComponent = WhereToSpawn;
 
 	//Set the spawn delay range
-	SpawnDelayRangeLow = 1.0f;
-	SpawnDelayRangeHigh = 2.5f;
+	SpawnDelayRangeLow = 2.0f;
+	SpawnDelayRangeHigh = 16.0f;
 }
 
 // Called when the game starts or when spawned
@@ -44,6 +44,7 @@ void ASpawn_NPC_Controller::Tick(float DeltaTime)
 
 FVector ASpawn_NPC_Controller::GetRandomPointInVolume()
 {
+//	FVector SpawnOrigin = WhereToSpawn->Bounds.Origin;
 	FVector SpawnOrigin = WhereToSpawn->Bounds.Origin;
 	FVector SpawnExtent = WhereToSpawn->Bounds.BoxExtent;
 
@@ -72,9 +73,9 @@ void ASpawn_NPC_Controller::SpawnNPC()
 
 			// Get a  rotation for the spawned item
 			FRotator SpawnRotation;
-			SpawnRotation.Yaw = 0;/*FMath::FRand() * 360.0f;*/
-			SpawnRotation.Pitch = 0 /*FMath::FRand() * 360.0f*/;
-			SpawnRotation.Roll = 0/*FMath::FRand() * 360.0f*/;
+			SpawnRotation.Yaw = FMath::FRand() * 360.0f;
+			SpawnRotation.Pitch = 0;//FMath::FRand() * 360.0f;
+			SpawnRotation.Roll = 0; //FMath::FRand() * 360.0f;
 
 			// spawn the pickup
 			ANPCCharacter* SpawnedNPC = World->SpawnActor<ANPCCharacter>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
