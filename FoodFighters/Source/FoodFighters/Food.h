@@ -64,7 +64,7 @@ public:
 		AFood* NextFoodWaypoint_2;
 
 	// make mesh component
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		class UStaticMeshComponent* FoodMesh;
 
 	// plate mesh component

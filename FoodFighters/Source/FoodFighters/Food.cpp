@@ -22,7 +22,7 @@ AFood::AFood()
 	//////BoxComponent attches to an overlap component which connets to OnPlayerEnter function 
 	//BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &AFood::OnOverlapBegin);
 
-	SphereRadius = 100.0f;
+	SphereRadius = 10.0f;
 
 	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
 	CollisionSphere->InitSphereRadius(SphereRadius);
