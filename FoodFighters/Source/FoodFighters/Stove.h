@@ -50,6 +50,8 @@ private:
 		void CookFood();
 	UFUNCTION()
 		void BoilFood();
+
+	int seconds;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

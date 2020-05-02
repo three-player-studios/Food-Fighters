@@ -12,16 +12,18 @@ AStove::AStove()
 	// Stove Variables
 	CookingFood = nullptr;
 	CookCurrentTime = 0.0f;
-	CookTotalTime = 0.0f;
+	CookTotalTime = 10.0f;
 	IsCooking = false;
 	DoneCooking = false;
 
 	// Pot Variables
 	BoilingFood = nullptr;
 	BoilCurrentTime = 0.0f;
-	BoilTotalTime = 0.0f;
+	BoilTotalTime = 5.0f;
 	IsBoiling = false;
 	DoneBoiling = false;
+
+	seconds = 0;
 }
 
 // Called when the game starts or when spawned
@@ -36,13 +38,19 @@ void AStove::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (IsCooking == true)
+	seconds += 1;
+
+	if (seconds == 30)
 	{
-		CookFood();
-	}
-	if (IsBoiling == true)
-	{
-		BoilFood();
+		if (IsCooking == true)
+		{
+			CookFood();
+		}
+		if (IsBoiling == true)
+		{
+			BoilFood();
+		}
+		seconds = 0;
 	}
 }
 
